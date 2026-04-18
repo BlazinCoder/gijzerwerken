@@ -12,7 +12,18 @@ const SparkParticles = dynamic(
 export default function Hero() {
   const prefersReduced = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
+  const [initialBurst, setInitialBurst] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+
+  // Fire initial burst on mount for spectaculaire eerste indruk
+  useEffect(() => {
+    const t = setTimeout(() => setInitialBurst(true), 300);
+    const t2 = setTimeout(() => setInitialBurst(false), 600);
+    return () => {
+      clearTimeout(t);
+      clearTimeout(t2);
+    };
+  }, []);
 
   // Auto-reset for touch devices
   useEffect(() => {
@@ -34,7 +45,7 @@ export default function Hero() {
   return (
     <section className="relative h-screen flex items-center justify-center overflow-hidden bg-iron-900">
       {/* Three.js spark particles background */}
-      {!prefersReduced && <SparkParticles burst={isHovered} />}
+      {!prefersReduced && <SparkParticles burst={isHovered || initialBurst} />}
 
       {/* Content */}
       <div className="relative z-10 text-center px-6">
@@ -50,7 +61,28 @@ export default function Hero() {
             onMouseLeave={handleMouseLeave}
             onTouchStart={handleTouchStart}
           >
-            {/* Glow ring behind logo */}
+            {/* Ambient copper glow behind logo — always visible, pulses */}
+            <motion.div
+              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none rounded-full"
+              style={{
+                width: "150%",
+                height: "150%",
+                background:
+                  "radial-gradient(circle, rgba(196,122,42,0.25) 0%, rgba(196,122,42,0.08) 40%, transparent 70%)",
+                filter: "blur(40px)",
+              }}
+              animate={{
+                scale: isHovered ? [1.1, 1.2, 1.1] : [1, 1.08, 1],
+                opacity: isHovered ? 1 : 0.7,
+              }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
+
+            {/* Glow ring behind logo — intensifies on hover */}
             <div
               className="absolute inset-0 rounded-full pointer-events-none"
               style={{
@@ -61,11 +93,11 @@ export default function Hero() {
               }}
             />
 
-            {/* Logo with zoom + heat glow */}
+            {/* Logo with zoom + heat glow — verdubbelde grootte */}
             <motion.img
               src="/images/logo-white.png"
               alt="Gijzerwerken"
-              className="h-24 md:h-32 w-auto mx-auto"
+              className="h-40 md:h-56 lg:h-64 w-auto mx-auto relative"
               animate={{
                 scale: isHovered ? 1.3 : 1,
                 filter: isHovered
@@ -109,13 +141,22 @@ export default function Hero() {
           </div>
         </motion.div>
 
-        <motion.p
-          className="text-sm md:text-base tracking-widest uppercase text-cream/50 mt-6 max-w-md mx-auto"
-          initial={{ opacity: 0, y: 20 }}
+        {/* Title + subtitle — snelle fade-in voor 2s hero window */}
+        <motion.h1
+          className="font-playfair text-5xl md:text-7xl lg:text-8xl tracking-[0.15em] uppercase text-cream mt-6"
+          initial={{ opacity: 0, y: 15 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, delay: 0.6, ease: "easeOut" }}
+          transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
         >
-          IJzerbewerking op maat — van schroot tot kunstwerk
+          GIJZERWERKEN
+        </motion.h1>
+        <motion.p
+          className="text-base md:text-lg lg:text-xl tracking-normal text-copper-light mt-3 opacity-80"
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 0.8, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4, ease: "easeOut" }}
+        >
+          Upcycled metaalkunst uit Schiedam
         </motion.p>
       </div>
 
