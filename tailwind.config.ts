@@ -9,8 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        iron: {
+          900: "#0a0a0a",
+          800: "#1a1a1a",
+          700: "#2a2a2a",
+          600: "#3a3a3a",
+          500: "#4a4a4a",
+        },
+        copper: {
+          DEFAULT: "#c47a2a",
+          light: "#e8a849",
+          dark: "#9a5f1e",
+        },
+        rust: {
+          DEFAULT: "#8b3a2a",
+          light: "#a54d3c",
+        },
+        ember: {
+          DEFAULT: "#e8a849",
+          glow: "#f5c96b",
+        },
+        cream: "#f5f0eb",
+      },
+      fontFamily: {
+        playfair: ["var(--font-playfair)"],
+        inter: ["var(--font-inter)"],
       },
     },
   },

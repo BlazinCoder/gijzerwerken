@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Gijzerwerken.com
 
-## Getting Started
+Portfoliowebsite voor **Gijs Gonlag**, metaalkunstenaar uit Schiedam. Upcycled metaalkunst: sculpturen van oud ijzer, metalen bloemen, dierensculpturen en maatwerk staal-hout meubels.
 
-First, run the development server:
+## Tech stack
+
+- **Framework:** Next.js 14 (App Router, static export)
+- **Taal:** TypeScript strict
+- **Styling:** Tailwind CSS v3
+- **Animaties:** Framer Motion
+- **3D/Particles:** Three.js via React Three Fiber v8 + drei v9
+- **Hosting:** Cloudflare Pages
+
+## Vereisten
+
+- Node.js 18 of hoger
+- npm
+
+## Installatie
+
+```bash
+npm install
+```
+
+## Development
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in je browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Build
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run build
+```
 
-## Learn More
+Genereert een statische export in de `/out/` directory.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment (Cloudflare Pages)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Koppel je GitHub repository aan Cloudflare Pages
+2. Configuratie:
+   - **Build command:** `npm run build`
+   - **Build output directory:** `out`
+   - **Node.js version:** 18
+3. Push naar `main` branch triggert automatische deploy
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Projectstructuur
 
-## Deploy on Vercel
+```
+src/
+  app/          Pagina's (Next.js App Router)
+  components/   Herbruikbare componenten
+  data/         Portfolio en shop data
+public/         Statische bestanden (robots.txt, sitemap.xml)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Pagina's
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Route       | Beschrijving                          |
+|-------------|---------------------------------------|
+| `/`         | Homepage met hero en uitgelicht werk  |
+| `/portfolio`| Filterbaar portfolio grid + lightbox  |
+| `/over`     | Biografie en werkplaats               |
+| `/proces`   | Visueel 5-stappen werkproces          |
+| `/shop`     | Productcatalogus met prijzen          |
+| `/contact`  | Contactformulier + bedrijfsinfo       |
