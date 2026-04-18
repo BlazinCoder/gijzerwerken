@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
-import Hero from "@/components/sections/Hero";
-import FeaturedWork from "@/components/sections/FeaturedWork";
+import HomeIntro from "./HomeIntro";
 
 export const metadata: Metadata = {
   title: "Gijzerwerken — Upcycled Metaalkunst",
@@ -14,10 +13,5 @@ export const metadata: Metadata = {
 };
 
 export default function Home() {
-  return (
-    <>
-      <Hero />
-      <FeaturedWork />
-    </>
-  );
+  return <HomeIntro />;
 }
