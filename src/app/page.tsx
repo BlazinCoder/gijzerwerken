@@ -8,7 +8,15 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Gijzerwerken — Upcycled Metaalkunst",
     description:
-      "Upcycled metaalkunst door Gijs Gonlag. Van schroot tot kunstwerk.",
+      "Sculpturen, bloemen en maatwerk van oud ijzer door Gijs Gonlag uit Schiedam",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Gijzerwerken — Upcycled Metaalkunst door Gijs Gonlag",
+      },
+    ],
   },
 };
 
