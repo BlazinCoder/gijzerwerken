@@ -48,6 +48,12 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Gesmeed staal",
     images: [
       "/images/portfolio/zonnebloem.jpg",
+      "/images/portfolio/zonnebloem-2.jpg",
+      "/images/portfolio/zonnebloem-3.jpg",
+      "/images/portfolio/zonnebloem-4.jpg",
+      "/images/portfolio/zonnebloem-5.jpg",
+      "/images/portfolio/zonnebloem-6.jpg",
+      "/images/portfolio/zonnebloem-7.jpg",
     ],
   },
   {
@@ -100,6 +106,8 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Gelast staal, gepoedercoat",
     images: [
       "/images/portfolio/waratah.jpg",
+      "/images/portfolio/waratah-2.jpg",
+      "/images/portfolio/waratah-3.jpg",
     ],
   },
   {
@@ -113,6 +121,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Staal & gebrand hout (shou sugi ban)",
     images: [
       "/images/portfolio/eettafel.jpg",
+      "/images/portfolio/eettafel-2.jpg",
     ],
   },
   {
@@ -126,32 +135,39 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Staal, glas & massief hout",
     images: [
       "/images/portfolio/deur.jpg",
+      "/images/portfolio/deur-2.jpg",
     ],
   },
   {
     id: "rvs-schoorsteenkap",
-    title: "Schoorsteenkap",
+    title: "Stalen Schoorsteenkap",
     category: "maatwerk",
     description:
-      "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van RVS met een gesmede klavertje als bekroning.",
+      "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van staal met een gesmede klavertje als bekroning.",
     imageSrc: "/images/portfolio/schoorsteenkap.jpg",
     featured: false,
-    material: "RVS & gesmeed staal",
+    material: "Staal & gesmeed staal",
     images: [
       "/images/portfolio/schoorsteenkap.jpg",
+      "/images/portfolio/schoorsteenkap-2.jpg",
+      "/images/portfolio/schoorsteenkap-3.jpg",
+      "/images/portfolio/schoorsteenkap-4.jpg",
     ],
   },
   {
     id: "boomstam-bartafel",
-    title: "Boomstam Bartafel",
+    title: "Boomstam Barkrukken",
     category: "maatwerk",
     description:
-      "Aanpassingen aan oudere meubels om het zitten meer comfort te geven. Bartafel-set van massieve boomstammen, voorzien van handgesmede stalen voetsteunen.",
+      "Aanpassingen aan oudere meubels om het zitten meer comfort te geven. Barkruk-set van massieve boomstammen, voorzien van handgesmede stalen voetsteunen.",
     imageSrc: "/images/portfolio/bartafel.jpg",
     featured: false,
     material: "Massieve boomstam & staal",
     images: [
       "/images/portfolio/bartafel.jpg",
+      "/images/portfolio/bartafel-2.jpg",
+      "/images/portfolio/bartafel-3.jpg",
+      "/images/portfolio/bartafel-4.jpg",
     ],
   },
   {
@@ -165,6 +181,8 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Zwart staal & hout",
     images: [
       "/images/portfolio/trap-wandplanken.jpg",
+      "/images/portfolio/trap-wandplanken-2.jpg",
+      "/images/portfolio/trap-wandplanken-3.jpg",
     ],
   },
   {
@@ -178,6 +196,7 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Staal & hout",
     images: [
       "/images/portfolio/wijnrek.jpg",
+      "/images/portfolio/wijnrek-2.jpg",
     ],
   },
   {
