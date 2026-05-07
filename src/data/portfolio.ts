@@ -101,6 +101,16 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Staal, glas & massief hout",
   },
   {
+    id: "rvs-schoorsteenkap",
+    title: "Schoorsteenkap",
+    category: "maatwerk",
+    description:
+      "Op maat gemaakte schoorsteenkap van RVS met een gesmede klavertje als bekroning. De gebogen daklijn houdt regen weg en geeft het huis een ambachtelijke kroon.",
+    imageSrc: "/images/portfolio/schoorsteenkap.jpg",
+    featured: false,
+    material: "RVS & gesmeed staal",
+  },
+  {
     id: "boomstam-bartafel",
     title: "Boomstam Bartafel",
     category: "maatwerk",
