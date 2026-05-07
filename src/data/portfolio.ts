@@ -115,10 +115,10 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Industriële Eettafel",
     category: "maatwerk",
     description:
-      "Een multifunctionele tafel gemaakt voor 4 tot 10 personen. Stalen frame en gebrand houten bladen, behandeld met de Japanse shou sugi ban techniek voor een unieke textuur.",
+      "Een multifunctionele tafel gemaakt voor 4 tot 10 personen. Stalen frame en gebrand houten bladen, om het een robuuste look te geven.",
     imageSrc: "/images/portfolio/eettafel.jpg",
     featured: false,
-    material: "Staal & gebrand hout (shou sugi ban)",
+    material: "Staal & gebrand hout",
     images: [
       "/images/portfolio/eettafel.jpg",
       "/images/portfolio/eettafel-2.jpg",
@@ -143,7 +143,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Stalen Schoorsteenkap",
     category: "maatwerk",
     description:
-      "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van staal met een gesmede klavertje als bekroning.",
+      "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van staal met een Shamrock als bekroning.",
     imageSrc: "/images/portfolio/schoorsteenkap.jpg",
     featured: false,
     material: "Staal & gesmeed staal",
