@@ -154,11 +154,11 @@ export default function ContactContent() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.5, delay: 0.45 }}
-              className="mt-4 aspect-video overflow-hidden rounded-lg border border-iron-700/30 bg-iron-800"
+              className="mt-4 aspect-[4/3] overflow-hidden rounded-lg border border-iron-700/30 bg-iron-800"
             >
               <img
                 src="/images/portfolio/gijs-marktkraam.jpg"
-                alt="Gijs bij de werkplaats"
+                alt="Gijs bij zijn marktkraam met al zijn werk"
                 className="w-full h-full object-cover"
               />
             </motion.div>
