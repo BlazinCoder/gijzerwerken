@@ -25,7 +25,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Koperen Tulpenboeket",
     category: "bloemen",
     description:
-      "Boeket van handgevormde tulpen in koper en RVS, gepresenteerd in een gesmede vaas. Elke tulp is uniek gevormd uit plaatkoper.",
+      "Metalen tulpen gemaakt van gerecycled RVS en koper. Een boeket dat blijft. De koperen stelen zullen met de tijd groen verkleuren door oxidatie, waardoor elke bloem langzaam verandert. Handgemaakt uit hergebruikte materialen.",
     imageSrc: "/images/portfolio/tulpenboeket.jpg",
     featured: true,
     material: "Koper & RVS",
@@ -35,7 +35,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Stalen Zonnebloem",
     category: "bloemen",
     description:
-      "Levensgrote zonnebloem van staal met gehamerd bloemhart. De bladeren zijn individueel gesmeed en gepolijst voor een warm, gouden glans.",
+      "Uit gerecycled staal groeide deze zonnebloem. Elk blad met de hand gebogen, gevormd door vuur, met een eigen karakter. De kern zwart gebrand, zoals de zaden van een echte zonnebloem. Het idee werd geboren in Australië, tijdens een gesprek met een kunstenares die zonnebloemen schilderde — wat ooit restmateriaal was, kreeg zo een nieuw leven. Nu staat ze in een oude Nederlandse melkbus uit 1956: een herinnering aan vroeger, gecombineerd met iets dat nooit verwelkt. Een bloem van tijd, vuur en aandacht.",
     imageSrc: "/images/portfolio/zonnebloem.jpg",
     featured: true,
     material: "Gesmeed staal",
@@ -45,7 +45,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Zwevende Gieter",
     category: "sculpturen",
     description:
-      "Tuinsculptuur van een zwevende gieter, opgehangen aan een onzichtbare ketting. Het water wordt gesuggereerd door gelaste kettingschakels.",
+      "Tijdens mijn rondreis door Nieuw-Zeeland heb ik dit kunstwerk gemaakt van gerecycled materiaal, met dank aan Burkes Pass Vintage Store. Een zwevende gieter waarbij het water wordt gesuggereerd door gelaste kettingschakels.",
     imageSrc: "/images/portfolio/gieter.jpg",
     featured: true,
     material: "Staal & ketting",
@@ -65,7 +65,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Roos voor Moederdag",
     category: "bloemen",
     description:
-      "Grote cortenstaal roos op stalen voet, gemaakt als cadeau voor Moederdag. De roestbruine patina geeft een warme, organische uitstraling.",
+      "Met de hand geknipt en gevormd. Verhit en daarna verbogen tot de perfecte vorm. Cortenstaal roos op stalen voet — de roestbruine patina geeft een warme, organische uitstraling.",
     imageSrc: "/images/portfolio/roos-moederdag.jpg",
     featured: false,
     material: "Cortenstaal",
@@ -75,7 +75,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Waratah Bloem",
     category: "bloemen",
     description:
-      "Kleurrijke metalen waratah met felrode krullen en groene kelkbladeren. Geïnspireerd op de Australische waratah, volledig van gelast staal.",
+      "Deze waratah is veel te vinden in de growers-gebieden van Tasmanië. De bloem staat voor de wildernis van het eiland. Volledig van gelast staal, met felrode krullen en groene kelkbladeren.",
     imageSrc: "/images/portfolio/waratah.jpg",
     featured: false,
     material: "Gelast staal, gepoedercoat",
@@ -85,7 +85,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Industriële Eettafel",
     category: "maatwerk",
     description:
-      "Eettafel met stalen frame en gebrand houten blad. Het hout is met de Japanse shou sugi ban techniek behandeld voor een unieke textuur.",
+      "Een multifunctionele tafel gemaakt voor 4 tot 10 personen. Stalen frame en gebrand houten bladen, behandeld met de Japanse shou sugi ban techniek voor een unieke textuur.",
     imageSrc: "/images/portfolio/eettafel.jpg",
     featured: false,
     material: "Staal & gebrand hout (shou sugi ban)",
@@ -95,7 +95,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Deur van Staal, Glas en Hout",
     category: "maatwerk",
     description:
-      "Op maat gemaakte pivotdeur met stalen frame, glas en massief hout. Geometrische indeling combineert transparantie met warmte.",
+      "Een zelf ontworpen deur met staal, hout en glas — super uniek. Geometrische indeling combineert transparantie met warmte.",
     imageSrc: "/images/portfolio/deur.jpg",
     featured: false,
     material: "Staal, glas & massief hout",
@@ -105,7 +105,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Schoorsteenkap",
     category: "maatwerk",
     description:
-      "Op maat gemaakte schoorsteenkap van RVS met een gesmede klavertje als bekroning. De gebogen daklijn houdt regen weg en geeft het huis een ambachtelijke kroon.",
+      "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van RVS met een gesmede klavertje als bekroning.",
     imageSrc: "/images/portfolio/schoorsteenkap.jpg",
     featured: false,
     material: "RVS & gesmeed staal",
@@ -115,7 +115,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Boomstam Bartafel",
     category: "maatwerk",
     description:
-      "Bartafel set van massieve boomstammen met stalen voetsteunen. Elk stuk hout is uniek en de stalen details zijn handgesmeed.",
+      "Aanpassingen aan oudere meubels om het zitten meer comfort te geven. Bartafel-set van massieve boomstammen, voorzien van handgesmede stalen voetsteunen.",
     imageSrc: "/images/portfolio/bartafel.jpg",
     featured: false,
     material: "Massieve boomstam & staal",
@@ -125,7 +125,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Stalen Trap & Wandplanken",
     category: "maatwerk",
     description:
-      "Bibliotheektrap met rail-systeem en bijpassende wandplanken, volledig van zwart staal met houten accenten.",
+      "Een industriële ladder die praktisch is en er ook nog eens goed uitziet als aankleding voor je huis. Volledig van zwart staal met bijpassende wandplanken en houten accenten.",
     imageSrc: "/images/portfolio/trap-wandplanken.jpg",
     featured: false,
     material: "Zwart staal & hout",
@@ -135,7 +135,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Wijnrek Staal & Hout",
     category: "maatwerk",
     description:
-      "Wijnrek met gegolfde stalen houders in een houten frame. Plaats voor tientallen flessen, compact en stijlvol.",
+      "Een sierlijk wijnrek, op maat gemaakt om precies tussen de muren te passen. Geschikt voor zowel smalle als brede flessen, met gegolfde stalen houders in een houten frame.",
     imageSrc: "/images/portfolio/wijnrek.jpg",
     featured: false,
     material: "Staal & hout",
@@ -155,7 +155,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Handgemaakte Smoker",
     category: "vuurkorven",
     description:
-      "Volledig handgemaakte offset smoker met moersleutel als handvat, thermometer en apart vuurdeur. Gebouwd om jarenlang mee te gaan.",
+      "Een robuuste American smoker BBQ, gemaakt voor eigen gebruik met een industrieel tintje. Offset smoker met moersleutel als handvat, thermometer en aparte vuurdeur — gebouwd om jarenlang mee te gaan.",
     imageSrc: "/images/portfolio/smoker.jpg",
     featured: false,
     material: "Staal",
@@ -165,7 +165,7 @@ export const portfolioItems: PortfolioItem[] = [
     title: "Industriële Barkrukken",
     category: "maatwerk",
     description:
-      "Set bijzettafels met Z-vormig stalen onderstel en gebrand houten blad. Industrieel design dat in elk interieur past.",
+      "Moderne barkrukken met Z-vormig stalen onderstel, afgewerkt met gebrande houten zittingen. Industrieel design dat in elk interieur past.",
     imageSrc: "/images/portfolio/barkrukken.jpg",
     featured: false,
     material: "Staal & gebrand hout",
