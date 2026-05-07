@@ -4,7 +4,6 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import SectionHeader from "@/components/ui/SectionHeader";
-import ForgeSparks from "@/components/three/ForgeSparks";
 
 interface ProcessStep {
   number: string;
@@ -132,8 +131,7 @@ export default function ProcesContent() {
   const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   return (
-    <div className="relative min-h-screen" style={{ zIndex: 1 }}>
-      <ForgeSparks />
+    <div className="relative min-h-screen">
       {/* Header */}
       <section className="pt-32 pb-12 px-6">
         <SectionHeader

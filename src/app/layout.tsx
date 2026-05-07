@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Playfair_Display, Inter } from "next/font/google";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import ForgeSparks from "@/components/three/ForgeSparks";
 import "./globals.css";
 
 const playfair = Playfair_Display({
@@ -61,9 +62,12 @@ export default function RootLayout({
   return (
     <html lang="nl" className={`${playfair.variable} ${inter.variable}`}>
       <body className="font-inter antialiased bg-iron-900 text-cream">
+        <ForgeSparks />
         <Navbar />
-        <main>{children}</main>
-        <Footer />
+        <main className="relative z-[1]">{children}</main>
+        <div className="relative z-[1]">
+          <Footer />
+        </div>
       </body>
     </html>
   );
