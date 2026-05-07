@@ -54,9 +54,10 @@ export default function OverContent() {
           <SectionHeader title="Het Verhaal" />
           <div className="mt-12 space-y-6">
             {[
-              "Al van jongs af aan gefascineerd door materiaal en vorm, begon Gijs Gonlag met het bewerken van metaal in een kleine werkplaats in Schiedam. Wat begon als een hobby groeide uit tot een passie — en uiteindelijk tot een ambacht. Met niets meer dan oud ijzer, een lasapparaat en een onuitputtelijk geduld creëert hij sculpturen die rauw én verfijnd tegelijk zijn.",
-              "Elk kunstwerk begint met materiaal dat anderen weggooien. Gerecycled staal, verweerde buizen, vergeten machineonderdelen — Gijs ziet er schoonheid in waar anderen afval zien. Dat is de kern van zijn werk: nieuwe betekenis geven aan wat al een leven achter zich heeft. Duurzaamheid is geen marketingterm, het is de basis van elke creatie.",
-              "Vanuit zijn werkplaats aan de Maashaven werkt Gijs in stilte aan sculpturen, bloemen van metaal en maatwerk meubels. Elk stuk is volledig met de hand gemaakt — geen mallen, geen massaproductie. Alleen vakmanschap, eerlijk materiaal en oog voor detail. Het resultaat: unieke objecten die een verhaal vertellen en een leven lang meegaan.",
+              "Al van jongs af aan ben ik gefascineerd door materiaal, vorm en het maken met mijn handen. In een kleine werkplaats in Schiedam begon ik met het bewerken van metaal. Wat eerst begon als een hobby groeide langzaam uit tot een passie en uiteindelijk tot een ambacht. Met oud ijzer, gerecyclede metalen, een lasapparaat en veel geduld maak ik sculpturen die tegelijkertijd rauw, verfijnd en vol karakter zijn.",
+              "Tijdens mijn eerste baan in de windmolens raakte ik steeds meer geïnteresseerd in lassen en metaalbewerking. Door jarenlang te oefenen groeide niet alleen mijn techniek, maar ook mijn vertrouwen. Inmiddels geloof ik dat bijna alles te maken is, zolang je blijft experimenteren en durft te creëren.",
+              "De inspiratie voor mijn werk haal ik uit de wereld om mij heen. Tijdens reizen raakte ik gefascineerd door de vormen, structuren en kleuren van bloemen en planten. Die natuurlijke lijnen vertaal ik naar staal, koper en andere gerecyclede metalen. Zo ontstaat een combinatie van natuur en industrie: kwetsbare organische vormen gemaakt van sterke, gebruikte materialen.",
+              "Met mijn werk wil ik laten zien dat afgedankte metalen nieuw leven kunnen krijgen. Elk object draagt sporen van een vorig bestaan, maar krijgt in een nieuwe vorm opnieuw betekenis. Vanuit Schiedam bouw ik stap voor stap aan een eigen stijl waarin vakmanschap, duurzaamheid en design samenkomen.",
             ].map((text, i) => (
               <motion.p
                 key={i}
