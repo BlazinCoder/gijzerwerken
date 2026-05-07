@@ -21,7 +21,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     description:
       "Elk project begint met een idee — soms van een klant, soms van een toevallige vondst op de sloop. Gijs schetst het ontwerp op papier, bepaalt de verhoudingen en kiest welke materialen het verhaal het beste vertellen.",
     gradient: "from-iron-700 via-iron-800 to-copper-dark",
-    imageSrc: "/images/portfolio/eettafel-industrieel.jpg",
+    imageSrc: "/images/portfolio/roos-moederdag.jpg",
   },
   {
     number: "02",
@@ -29,7 +29,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     description:
       "Op zoek naar het juiste materiaal bezoekt Gijs sloopterreinen, recyclingbedrijven en oude fabrieken. Elk stuk metaal heeft een eigen karakter — roestpatronen, buigingen en texturen die het verhaal van het kunstwerk vormen.",
     gradient: "from-copper-dark via-iron-700 to-iron-800",
-    imageSrc: "/images/portfolio/vuurkorf-draak.jpg",
+    imageSrc: "/images/portfolio/honda-zwaan.jpg",
   },
   {
     number: "03",
@@ -37,7 +37,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     description:
       "Met slijptol, pers en lasapparaat worden de losse onderdelen samengevoegd tot een geheel. Dit is waar het echte vakwerk zit: millimeter voor millimeter wordt het ontwerp werkelijkheid. Elke las wordt met de hand gezet.",
     gradient: "from-iron-800 via-iron-700 to-iron-600",
-    imageSrc: "/images/portfolio/stier-abstract.jpg",
+    imageSrc: "/images/portfolio/smoker.jpg",
   },
   {
     number: "04",
@@ -45,7 +45,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     description:
       "Na het vormen volgt de afwerking. Sommige stukken worden gepolijst voor een strak resultaat, andere worden bewust ruw gelaten of behandeld met een patina. De afwerking bepaalt het karakter — industrieel, elegant of verweerd.",
     gradient: "from-rust via-copper-dark to-iron-800",
-    imageSrc: "/images/portfolio/stalen-roos.jpg",
+    imageSrc: "/images/portfolio/zonnebloem.jpg",
   },
   {
     number: "05",
@@ -53,7 +53,7 @@ const PROCESS_STEPS: ProcessStep[] = [
     description:
       "Na dagen of weken werk staat het kunstwerk er. Klaar om een plek te krijgen in een huis, tuin of openbare ruimte. Elk stuk is uniek, volledig met de hand gemaakt, en vertelt het verhaal van het materiaal waaruit het is geboren.",
     gradient: "from-copper-dark via-iron-800 to-iron-700",
-    imageSrc: "/images/portfolio/zonnebloem.jpg",
+    imageSrc: "/images/portfolio/tulpenboeket.jpg",
   },
 ];
 

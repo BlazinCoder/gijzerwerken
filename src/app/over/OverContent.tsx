@@ -6,10 +6,10 @@ import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 
 const WORKSHOP_IMAGES = [
-  { src: "/images/portfolio/gieter-sculptuur-1.jpg", alt: "Gieter sculptuur" },
-  { src: "/images/portfolio/flamingo-honda.jpg", alt: "Flamingo sculptuur" },
-  { src: "/images/portfolio/uil-sculptuur.jpg", alt: "Uil sculptuur" },
-  { src: "/images/portfolio/vuurkorf-geometrisch.jpg", alt: "Geometrische vuurkorf" },
+  { src: "/images/portfolio/roos-moederdag.jpg", alt: "Cortenstaal roos" },
+  { src: "/images/portfolio/smoker.jpg", alt: "Handgemaakte smoker" },
+  { src: "/images/portfolio/eettafel.jpg", alt: "Industriële eettafel" },
+  { src: "/images/portfolio/waratah.jpg", alt: "Waratah bloem" },
 ];
 
 const FACTS = [

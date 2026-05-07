@@ -23,7 +23,7 @@ export const shopItems: ShopItem[] = [
     title: "Metalen Tulp Enkel",
     category: "bloemen",
     price: 85,
-    imageSrc: "/images/portfolio/tulpen-vaas.png",
+    imageSrc: "/images/portfolio/tulpenboeket.jpg",
     description:
       "Handgesmede tulp op slanke staal stengel. Elk bloemblad is individueel gevormd en gelast.",
     material: "RVS & koper",
@@ -34,7 +34,7 @@ export const shopItems: ShopItem[] = [
     title: "Tulpenboeket (5 stuks)",
     category: "bloemen",
     price: 275,
-    imageSrc: "/images/portfolio/tulpen-vaas.png",
+    imageSrc: "/images/portfolio/tulpenboeket.jpg",
     description:
       "Vijf tulpen in verschillende stadia van bloei, samengebonden met een gesmede ring.",
     material: "RVS & koper",
@@ -45,7 +45,7 @@ export const shopItems: ShopItem[] = [
     title: "Roos op Voet",
     category: "bloemen",
     price: 95,
-    imageSrc: "/images/portfolio/stalen-roos.jpg",
+    imageSrc: "/images/portfolio/roos-zwart.jpg",
     description:
       "Enkele roos op een gewogen voetplaat. Ideaal als cadeau of decoratiestuk.",
     material: "Koper & messing",
@@ -56,7 +56,7 @@ export const shopItems: ShopItem[] = [
     title: "Mini Uiltje",
     category: "sculpturen",
     price: 145,
-    imageSrc: "/images/portfolio/uil-sculptuur.jpg",
+    imageSrc: "/images/portfolio/honda-zwaan.jpg",
     description:
       "Kleine uil van gerecyclede boutjes en moertjes. Elk exemplaar is uniek door het gebruikte materiaal.",
     material: "Gerecycled staal",
@@ -67,7 +67,7 @@ export const shopItems: ShopItem[] = [
     title: "Stier Maquette",
     category: "sculpturen",
     price: 350,
-    imageSrc: "/images/portfolio/stier-abstract.jpg",
+    imageSrc: "/images/portfolio/gieter.jpg",
     description:
       "Schaalmodel van de Charging Bull. Handgesneden staalplaten op eikenhouten sokkel.",
     material: "Cortenstaal & eiken",
@@ -78,7 +78,7 @@ export const shopItems: ShopItem[] = [
     title: "Kandelaar Gedraaid",
     category: "maatwerk",
     price: 120,
-    imageSrc: "/images/portfolio/eettafel-industrieel.jpg",
+    imageSrc: "/images/portfolio/eettafel.jpg",
     description:
       "Driearmige kandelaar met gedraaide stelen. Past drie standaard dinerkaarsen.",
     material: "Gesmeed staal",
@@ -89,7 +89,7 @@ export const shopItems: ShopItem[] = [
     title: "Vuurkorf Botanisch",
     category: "vuurkorven",
     price: 295,
-    imageSrc: "/images/portfolio/vuurkorf-draak.jpg",
+    imageSrc: "/images/portfolio/smoker.jpg",
     description:
       "Vuurkorf met uitgesneden bladmotieven. Het licht schijnt door de openingen voor een sfeervolle schaduwwerking.",
     material: "Cortenstaal 3mm",
@@ -100,7 +100,7 @@ export const shopItems: ShopItem[] = [
     title: "Vuurkorf Landschap",
     category: "vuurkorven",
     price: 325,
-    imageSrc: "/images/portfolio/vuurkorf-geometrisch.jpg",
+    imageSrc: "/images/portfolio/smoker.jpg",
     description:
       "Panoramische vuurkorf met Hollands landschap: molens, rietland en wolkenluchten.",
     material: "Cortenstaal 4mm",
