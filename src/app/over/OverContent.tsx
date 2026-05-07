@@ -13,7 +13,7 @@ const WORKSHOP_IMAGES = [
 ];
 
 const FACTS = [
-  { target: 50, suffix: "+", label: "Kunstwerken" },
+  { display: "2021", label: "Actief sinds" },
   { target: 100, suffix: "%", label: "Handgemaakt" },
   { label: "Gerecycled Materiaal" },
 ] as const;
@@ -111,6 +111,8 @@ export default function OverContent() {
                     target={fact.target}
                     suffix={fact.suffix}
                   />
+                ) : "display" in fact ? (
+                  <span>{fact.display}</span>
                 ) : (
                   <span>♻</span>
                 )}
