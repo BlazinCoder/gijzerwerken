@@ -46,6 +46,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/zonnebloem.jpg",
     featured: true,
     material: "Gesmeed staal",
+    images: [
+      "/images/portfolio/zonnebloem.jpg",
+    ],
   },
   {
     id: "zwevende-gieter",
@@ -56,6 +59,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/gieter.jpg",
     featured: true,
     material: "Staal & ketting",
+    images: [
+      "/images/portfolio/gieter.jpg",
+    ],
   },
   {
     id: "honda-zwaan",
@@ -66,6 +72,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/honda-zwaan.jpg",
     featured: true,
     material: "Honda-motortank & motorketting",
+    images: [
+      "/images/portfolio/honda-zwaan.jpg",
+    ],
   },
   {
     id: "roos-moederdag",
@@ -76,6 +85,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/roos-moederdag.jpg",
     featured: false,
     material: "Cortenstaal",
+    images: [
+      "/images/portfolio/roos-moederdag.jpg",
+    ],
   },
   {
     id: "waratah-bloem",
@@ -86,6 +98,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/waratah.jpg",
     featured: false,
     material: "Gelast staal, gepoedercoat",
+    images: [
+      "/images/portfolio/waratah.jpg",
+    ],
   },
   {
     id: "industriele-eettafel",
@@ -96,6 +111,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/eettafel.jpg",
     featured: false,
     material: "Staal & gebrand hout (shou sugi ban)",
+    images: [
+      "/images/portfolio/eettafel.jpg",
+    ],
   },
   {
     id: "deur-staal-glas-hout",
@@ -106,6 +124,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/deur.jpg",
     featured: false,
     material: "Staal, glas & massief hout",
+    images: [
+      "/images/portfolio/deur.jpg",
+    ],
   },
   {
     id: "rvs-schoorsteenkap",
@@ -116,6 +137,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/schoorsteenkap.jpg",
     featured: false,
     material: "RVS & gesmeed staal",
+    images: [
+      "/images/portfolio/schoorsteenkap.jpg",
+    ],
   },
   {
     id: "boomstam-bartafel",
@@ -126,6 +150,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/bartafel.jpg",
     featured: false,
     material: "Massieve boomstam & staal",
+    images: [
+      "/images/portfolio/bartafel.jpg",
+    ],
   },
   {
     id: "stalen-trap-wandplanken",
@@ -136,6 +163,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/trap-wandplanken.jpg",
     featured: false,
     material: "Zwart staal & hout",
+    images: [
+      "/images/portfolio/trap-wandplanken.jpg",
+    ],
   },
   {
     id: "wijnrek-staal-hout",
@@ -146,6 +176,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/wijnrek.jpg",
     featured: false,
     material: "Staal & hout",
+    images: [
+      "/images/portfolio/wijnrek.jpg",
+    ],
   },
   {
     id: "gesmede-roos-zwart",
@@ -156,6 +189,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/roos-zwart.jpg",
     featured: false,
     material: "Zwart gesmeed staal",
+    images: [
+      "/images/portfolio/roos-zwart.jpg",
+    ],
   },
   {
     id: "handgemaakte-smoker",
@@ -166,6 +202,9 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/smoker.jpg",
     featured: false,
     material: "Staal",
+    images: [
+      "/images/portfolio/smoker.jpg",
+    ],
   },
   {
     id: "industriele-barkrukken",
@@ -176,5 +215,8 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/barkrukken.jpg",
     featured: false,
     material: "Staal & gebrand hout",
+    images: [
+      "/images/portfolio/barkrukken.jpg",
+    ],
   },
 ];
