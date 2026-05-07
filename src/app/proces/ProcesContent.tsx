@@ -3,7 +3,6 @@
 import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import SectionHeader from "@/components/ui/SectionHeader";
 
 interface ProcessStep {
   number: string;
@@ -86,7 +85,7 @@ function TimelineStep({
       >
         {/* Image */}
         <div
-          className={`rounded-lg aspect-[4/3] overflow-hidden mb-6 md:mb-0 ${
+          className={`rounded-lg aspect-[4/3] overflow-hidden mb-6 md:mb-0 bg-iron-900 ${
             isEven ? "md:order-1" : "md:order-2"
           }`}
         >
@@ -94,7 +93,7 @@ function TimelineStep({
             <img
               src={step.imageSrc}
               alt={step.title}
-              className="w-full h-full object-cover"
+              className="w-full h-full object-contain"
             />
           ) : (
             <div className={`w-full h-full bg-gradient-to-br ${step.gradient}`} />
@@ -134,10 +133,21 @@ export default function ProcesContent() {
     <div className="relative min-h-screen">
       {/* Header */}
       <section className="pt-32 pb-12 px-6">
-        <SectionHeader
-          title="Het Proces"
-          subtitle="Van rauw materiaal tot kunstwerk — elke stap met de hand"
-        />
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center"
+        >
+          <h1 className="font-playfair text-3xl md:text-5xl text-cream">
+            Het Proces
+          </h1>
+          <div className="w-16 h-0.5 bg-copper mt-4 mx-auto" />
+          <p className="mt-4 text-cream/70 text-lg max-w-2xl mx-auto">
+            Van rauw materiaal tot kunstwerk — elke stap met de hand
+          </p>
+        </motion.div>
       </section>
 
       {/* Timeline */}

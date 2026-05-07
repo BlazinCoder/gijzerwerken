@@ -18,7 +18,7 @@ export default function Footer() {
           <Link href="/" className="block">
             <img
               src="/images/logo-white.png"
-              alt="Gijzerwerken"
+              alt="Gijzerwerken - Upcycled Metaalkunst Logo"
               className="h-8 w-auto opacity-80 hover:opacity-100 transition-opacity"
             />
           </Link>

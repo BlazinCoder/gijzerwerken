@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 
 const navLinks = [
@@ -14,6 +15,7 @@ const navLinks = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -45,7 +47,7 @@ export default function Navbar() {
         <Link href="/" className="block">
           <img
             src="/images/logo-white.png"
-            alt="Gijzerwerken"
+            alt="Gijzerwerken - Upcycled Metaalkunst Logo"
             className="h-20 w-auto"
           />
         </Link>

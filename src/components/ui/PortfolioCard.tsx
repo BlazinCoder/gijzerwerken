@@ -68,6 +68,7 @@ export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
           <img
             src={item.imageSrc}
             alt={item.title}
+            loading="lazy"
             className="aspect-[3/4] w-full object-cover"
             onError={() => setImgError(true)}
           />

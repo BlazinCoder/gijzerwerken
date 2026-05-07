@@ -96,7 +96,7 @@ export default function Hero() {
             {/* Logo with zoom + heat glow — verdubbelde grootte */}
             <motion.img
               src="/images/logo-white.png"
-              alt="Gijzerwerken"
+              alt="Gijzerwerken - Upcycled Metaalkunst Logo"
               className="h-40 md:h-56 lg:h-64 w-auto mx-auto relative"
               animate={{
                 scale: isHovered ? 1.3 : 1,

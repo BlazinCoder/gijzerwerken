@@ -20,13 +20,32 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://gijzerwerken.com"),
   title: {
-    default: "Gijzerwerken — Upcycled Metaalkunst",
-    template: "%s",
+    default: "Gijzerwerken — Upcycled Metaalkunst uit Schiedam",
+    template: "%s | Gijzerwerken",
   },
   description:
-    "Upcycled metaalkunst door Gijs Gonlag uit Schiedam. Sculpturen van oud ijzer, metalen bloemen, dierensculpturen en maatwerk staal-hout meubels.",
+    "Gijzerwerken maakt unieke sculpturen, metalen bloemen en maatwerk meubels van gerecycled staal en koper. Handgemaakt door Gijs Gonlag in Schiedam.",
+  keywords: [
+    "metaalkunst",
+    "upcycled kunst",
+    "stalen sculpturen",
+    "metalen bloemen",
+    "koperen tulpen",
+    "cortenstaal",
+    "maatwerk meubels",
+    "smeedwerk",
+    "Schiedam",
+    "Gijs Gonlag",
+    "Gijzerwerken",
+    "industrieel design",
+    "metaalbewerking",
+    "handgemaakt",
+    "recycled metaal",
+  ],
+  authors: [{ name: "Gijs Gonlag" }],
+  creator: "Gijzerwerken",
   openGraph: {
-    title: "Gijzerwerken — Upcycled Metaalkunst",
+    title: "Gijzerwerken — Upcycled Metaalkunst uit Schiedam",
     description:
       "Sculpturen, bloemen en maatwerk van oud ijzer door Gijs Gonlag uit Schiedam",
     url: "https://gijzerwerken.com",
@@ -44,10 +63,24 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Gijzerwerken — Upcycled Metaalkunst",
+    title: "Gijzerwerken — Upcycled Metaalkunst uit Schiedam",
     description:
       "Sculpturen, bloemen en maatwerk van oud ijzer door Gijs Gonlag uit Schiedam",
     images: ["/og-image.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://gijzerwerken.com",
   },
   icons: {
     icon: [{ url: "/icon.svg", type: "image/svg+xml" }],

@@ -155,6 +155,7 @@ export default function Lightbox({
                       key={activePhoto}
                       src={activePhoto}
                       alt={item.title}
+                      loading="eager"
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
@@ -197,7 +198,7 @@ export default function Lightbox({
                     >
                       <img
                         src={src}
-                        alt=""
+                        alt={`${item.title} - foto ${i + 1}`}
                         className="h-16 w-16 object-cover"
                       />
                     </button>

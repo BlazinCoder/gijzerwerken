@@ -5,6 +5,10 @@ export const metadata: Metadata = {
   title: "Shop — Gijzerwerken",
   description:
     "Handgemaakte kunstwerken van gerecycled ijzer. Elk stuk uniek, volledig met de hand gemaakt door Gijs Gonlag.",
+  robots: {
+    index: false,
+    follow: false,
+  },
   openGraph: {
     title: "Shop — Gijzerwerken",
     description: "Unieke metaalkunst — handgemaakt, elk stuk een verhaal.",

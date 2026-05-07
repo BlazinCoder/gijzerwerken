@@ -2,7 +2,6 @@
 
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import SectionHeader from "@/components/ui/SectionHeader";
 import ContactForm from "@/components/ui/ContactForm";
 
 const INFO_ITEMS = [
@@ -93,15 +92,7 @@ export default function ContactContent() {
     : undefined;
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-6">
-      <div className="max-w-6xl mx-auto">
-        <SectionHeader
-          title="Contact"
-          subtitle="Neem gerust contact op — we denken graag mee"
-          centered
-        />
-
-        <div className="mt-12 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
+    <div className="mt-12 grid grid-cols-1 lg:grid-cols-5 gap-12 lg:gap-16">
           {/* Form column */}
           <div className="lg:col-span-3">
             <ContactForm
@@ -163,8 +154,6 @@ export default function ContactContent() {
               />
             </motion.div>
           </div>
-        </div>
-      </div>
     </div>
   );
 }
