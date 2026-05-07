@@ -18,7 +18,7 @@ const jsonLd = {
   "@type": "LocalBusiness",
   name: "Gijzerwerken",
   description:
-    "Upcycled metaalkunst door Gijs Gonlag — sculpturen, bloemen, vuurkorven en maatwerk meubels van gerecycled ijzer.",
+    "Upcycled metaalkunst door Gijs Gonlag — sculpturen, bloemen en maatwerk meubels van gerecycled ijzer.",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Schiedam",

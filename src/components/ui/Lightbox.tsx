@@ -8,7 +8,6 @@ const CATEGORY_GRADIENTS: Record<Category, string> = {
   sculpturen: "from-iron-700 via-iron-800 to-copper-dark",
   bloemen: "from-copper via-copper-light to-ember-glow",
   maatwerk: "from-iron-800 via-iron-700 to-iron-600",
-  vuurkorven: "from-rust via-rust-light to-ember",
 };
 
 interface LightboxProps {

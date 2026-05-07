@@ -87,7 +87,7 @@ export const shopItems: ShopItem[] = [
   {
     id: "vuurkorf-botanisch",
     title: "Vuurkorf Botanisch",
-    category: "vuurkorven",
+    category: "maatwerk",
     price: 295,
     imageSrc: "/images/portfolio/smoker.jpg",
     description:
@@ -98,7 +98,7 @@ export const shopItems: ShopItem[] = [
   {
     id: "vuurkorf-landschap",
     title: "Vuurkorf Landschap",
-    category: "vuurkorven",
+    category: "maatwerk",
     price: 325,
     imageSrc: "/images/portfolio/smoker.jpg",
     description:

@@ -1,11 +1,10 @@
-export const CATEGORIES = ["sculpturen", "bloemen", "maatwerk", "vuurkorven"] as const;
+export const CATEGORIES = ["sculpturen", "bloemen", "maatwerk"] as const;
 export type Category = (typeof CATEGORIES)[number];
 
 export const CATEGORY_LABELS: Record<Category, string> = {
   sculpturen: "Sculpturen",
   bloemen: "Bloemen",
   maatwerk: "Maatwerk",
-  vuurkorven: "Vuurkorven",
 };
 
 export interface PortfolioItem {
@@ -153,7 +152,7 @@ export const portfolioItems: PortfolioItem[] = [
   {
     id: "handgemaakte-smoker",
     title: "Handgemaakte Smoker",
-    category: "vuurkorven",
+    category: "maatwerk",
     description:
       "Een robuuste American smoker BBQ, gemaakt voor eigen gebruik met een industrieel tintje. Offset smoker met moersleutel als handvat, thermometer en aparte vuurdeur — gebouwd om jarenlang mee te gaan.",
     imageSrc: "/images/portfolio/smoker.jpg",

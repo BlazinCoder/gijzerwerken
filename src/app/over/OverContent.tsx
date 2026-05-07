@@ -56,7 +56,7 @@ export default function OverContent() {
             {[
               "Al van jongs af aan gefascineerd door materiaal en vorm, begon Gijs Gonlag met het bewerken van metaal in een kleine werkplaats in Schiedam. Wat begon als een hobby groeide uit tot een passie — en uiteindelijk tot een ambacht. Met niets meer dan oud ijzer, een lasapparaat en een onuitputtelijk geduld creëert hij sculpturen die rauw én verfijnd tegelijk zijn.",
               "Elk kunstwerk begint met materiaal dat anderen weggooien. Gerecycled staal, verweerde buizen, vergeten machineonderdelen — Gijs ziet er schoonheid in waar anderen afval zien. Dat is de kern van zijn werk: nieuwe betekenis geven aan wat al een leven achter zich heeft. Duurzaamheid is geen marketingterm, het is de basis van elke creatie.",
-              "Vanuit zijn werkplaats aan de Maashaven werkt Gijs in stilte aan sculpturen, bloemen van metaal, vuurkorven en maatwerk meubels. Elk stuk is volledig met de hand gemaakt — geen mallen, geen massaproductie. Alleen vakmanschap, eerlijk materiaal en oog voor detail. Het resultaat: unieke objecten die een verhaal vertellen en een leven lang meegaan.",
+              "Vanuit zijn werkplaats aan de Maashaven werkt Gijs in stilte aan sculpturen, bloemen van metaal en maatwerk meubels. Elk stuk is volledig met de hand gemaakt — geen mallen, geen massaproductie. Alleen vakmanschap, eerlijk materiaal en oog voor detail. Het resultaat: unieke objecten die een verhaal vertellen en een leven lang meegaan.",
             ].map((text, i) => (
               <motion.p
                 key={i}
