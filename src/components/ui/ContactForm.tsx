@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-const FORMSPREE_URL = "https://formspree.io/f/xyzplaceholder";
+const FORMSPREE_URL = "https://formspree.io/f/mwvynbyl";
 
 const ONDERWERPEN = [
   "Maatwerk aanvraag",
