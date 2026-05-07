@@ -54,16 +54,24 @@ export default function Navbar() {
 
         {/* Desktop nav */}
         <ul className="hidden md:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <li key={link.href}>
-              <Link
-                href={link.href}
-                className="text-sm tracking-widest uppercase text-cream/70 hover:text-copper transition-colors duration-300"
-              >
-                {link.label}
-              </Link>
-            </li>
-          ))}
+          {navLinks.map((link) => {
+            const isActive = pathname === link.href;
+            return (
+              <li key={link.href}>
+                <Link
+                  href={link.href}
+                  aria-current={isActive ? "page" : undefined}
+                  className={`text-sm tracking-widest uppercase transition-colors duration-300 ${
+                    isActive
+                      ? "text-copper-light drop-shadow-[0_0_8px_rgba(232,168,73,0.6)]"
+                      : "text-cream/70 hover:text-copper"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
         </ul>
 
         {/* Hamburger button */}
@@ -102,22 +110,30 @@ export default function Navbar() {
             className="md:hidden absolute top-full left-0 right-0 bg-iron-900/98 backdrop-blur-md border-b border-iron-700/50"
           >
             <ul className="flex flex-col items-center py-8 gap-6">
-              {navLinks.map((link, i) => (
-                <motion.li
-                  key={link.href}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: i * 0.05, duration: 0.3 }}
-                >
-                  <Link
-                    href={link.href}
-                    className="text-sm tracking-widest uppercase text-cream/70 hover:text-copper transition-colors duration-300"
-                    onClick={() => setMenuOpen(false)}
+              {navLinks.map((link, i) => {
+                const isActive = pathname === link.href;
+                return (
+                  <motion.li
+                    key={link.href}
+                    initial={{ opacity: 0, y: -10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: i * 0.05, duration: 0.3 }}
                   >
-                    {link.label}
-                  </Link>
-                </motion.li>
-              ))}
+                    <Link
+                      href={link.href}
+                      aria-current={isActive ? "page" : undefined}
+                      className={`text-sm tracking-widest uppercase transition-colors duration-300 ${
+                        isActive
+                          ? "text-copper-light drop-shadow-[0_0_8px_rgba(232,168,73,0.6)]"
+                          : "text-cream/70 hover:text-copper"
+                      }`}
+                      onClick={() => setMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.li>
+                );
+              })}
             </ul>
           </motion.div>
         )}
