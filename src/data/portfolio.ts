@@ -16,6 +16,8 @@ export interface PortfolioItem {
   featured: boolean;
   dimensions?: string;
   material: string;
+  // Optional gallery — when present, images[0] must equal imageSrc.
+  images?: string[];
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -28,6 +30,12 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/tulpenboeket.jpg",
     featured: true,
     material: "Koper & RVS",
+    images: [
+      "/images/portfolio/tulpenboeket.jpg",
+      "/images/portfolio/tulpenboeket-2.jpg",
+      "/images/portfolio/tulpenboeket-3.jpg",
+      "/images/portfolio/tulpenboeket-4.jpg",
+    ],
   },
   {
     id: "stalen-zonnebloem",
