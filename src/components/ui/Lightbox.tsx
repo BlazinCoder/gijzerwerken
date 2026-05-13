@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useCallback, useState } from "react";
+import { useEffect, useCallback, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { PortfolioItem, Category } from "@/data/portfolio";
 
@@ -28,9 +28,13 @@ export default function Lightbox({
   const item = items[currentIndex];
   const [imgError, setImgError] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(initialPhotoIndex);
-  const [isZoomed, setIsZoomed] = useState(false);
-  const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
+  const [lensVisible, setLensVisible] = useState(false);
+  const [lensPos, setLensPos] = useState({ x: 0, y: 0, bgX: 0, bgY: 0, bgW: 0, bgH: 0 });
+  const imgRef = useRef<HTMLImageElement>(null);
   const reducedMotion = useReducedMotion();
+
+  const LENS_SIZE = 200;
+  const ZOOM = 3;
 
   const photos =
     item?.images && item.images.length > 0 ? item.images : item ? [item.imageSrc] : [];
@@ -42,15 +46,13 @@ export default function Lightbox({
   useEffect(() => {
     setPhotoIndex(0);
     setImgError(false);
-    setIsZoomed(false);
-    setZoomPosition({ x: 50, y: 50 });
+    setLensVisible(false);
   }, [currentIndex]);
 
-  // Reset image-error + zoom when photo within item changes
+  // Reset image-error + lens when photo within item changes
   useEffect(() => {
     setImgError(false);
-    setIsZoomed(false);
-    setZoomPosition({ x: 50, y: 50 });
+    setLensVisible(false);
   }, [photoIndex]);
 
   const goItemPrev = useCallback(() => {
@@ -75,12 +77,7 @@ export default function Lightbox({
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        if (isZoomed) {
-          setIsZoomed(false);
-          setZoomPosition({ x: 50, y: 50 });
-        } else {
-          onClose();
-        }
+        onClose();
         return;
       }
       if (e.key === "ArrowLeft") {
@@ -109,7 +106,7 @@ export default function Lightbox({
       document.body.classList.remove("menu-open");
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose, goItemPrev, goItemNext, goPhotoPrev, goPhotoNext, hasMultiplePhotos, isZoomed]);
+  }, [onClose, goItemPrev, goItemNext, goPhotoPrev, goPhotoNext, hasMultiplePhotos]);
 
   if (!item) return null;
 
@@ -122,14 +119,7 @@ export default function Lightbox({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
       className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-iron-900/95 backdrop-blur-md"
-      onClick={() => {
-        if (isZoomed) {
-          setIsZoomed(false);
-          setZoomPosition({ x: 50, y: 50 });
-        } else {
-          onClose();
-        }
-      }}
+      onClick={onClose}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
@@ -173,6 +163,7 @@ export default function Lightbox({
                   <AnimatePresence mode="wait">
                     <motion.img
                       key={activePhoto}
+                      ref={imgRef}
                       src={activePhoto}
                       alt={item.title}
                       loading="eager"
@@ -180,40 +171,39 @@ export default function Lightbox({
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: fadeDuration }}
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        setIsZoomed((z) => !z);
-                      }}
+                      onMouseEnter={() => setLensVisible(true)}
+                      onMouseLeave={() => setLensVisible(false)}
                       onMouseMove={(e) => {
-                        if (!isZoomed) return;
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const x = ((e.clientX - rect.left) / rect.width) * 100;
-                        const y = ((e.clientY - rect.top) / rect.height) * 100;
-                        setZoomPosition({ x, y });
+                        const el = e.currentTarget;
+                        const rect = el.getBoundingClientRect();
+                        const x = e.clientX - rect.left;
+                        const y = e.clientY - rect.top;
+                        const bgW = rect.width * ZOOM;
+                        const bgH = rect.height * ZOOM;
+                        const bgX = -(x * ZOOM - LENS_SIZE / 2);
+                        const bgY = -(y * ZOOM - LENS_SIZE / 2);
+                        setLensPos({ x, y, bgX, bgY, bgW, bgH });
                       }}
-                      onTouchMove={(e) => {
-                        if (!isZoomed) return;
-                        e.preventDefault();
-                        const touch = e.touches[0];
-                        const rect = e.currentTarget.getBoundingClientRect();
-                        const x = ((touch.clientX - rect.left) / rect.width) * 100;
-                        const y = ((touch.clientY - rect.top) / rect.height) * 100;
-                        setZoomPosition({
-                          x: Math.max(0, Math.min(100, x)),
-                          y: Math.max(0, Math.min(100, y)),
-                        });
-                      }}
-                      className={`max-h-full max-w-full rounded-lg object-contain transition-transform duration-300 ${
-                        isZoomed ? "scale-[2.5] cursor-zoom-out" : "cursor-zoom-in"
-                      }`}
-                      style={
-                        isZoomed
-                          ? { transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%` }
-                          : undefined
-                      }
+                      className="max-h-full max-w-full rounded-lg object-contain md:cursor-crosshair"
                       onError={() => setImgError(true)}
                     />
                   </AnimatePresence>
+                )}
+                {!imgError && lensVisible && !reducedMotion && (
+                  <div
+                    aria-hidden="true"
+                    className="pointer-events-none absolute hidden rounded-full border-2 border-copper/60 shadow-2xl md:block"
+                    style={{
+                      width: LENS_SIZE,
+                      height: LENS_SIZE,
+                      left: (imgRef.current?.offsetLeft ?? 0) + lensPos.x - LENS_SIZE / 2,
+                      top: (imgRef.current?.offsetTop ?? 0) + lensPos.y - LENS_SIZE / 2,
+                      backgroundImage: `url(${activePhoto})`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundSize: `${lensPos.bgW}px ${lensPos.bgH}px`,
+                      backgroundPosition: `${lensPos.bgX}px ${lensPos.bgY}px`,
+                    }}
+                  />
                 )}
               </div>
 
