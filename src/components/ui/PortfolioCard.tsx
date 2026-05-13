@@ -13,9 +13,10 @@ const CATEGORY_GRADIENTS: Record<Category, string> = {
 interface PortfolioCardProps {
   item: PortfolioItem;
   onClick: () => void;
+  isLarge?: boolean;
 }
 
-export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
+export default function PortfolioCard({ item, onClick, isLarge = false }: PortfolioCardProps) {
   const cardRef = useRef<HTMLDivElement>(null);
   const [enableTilt, setEnableTilt] = useState(false);
   const [imgError, setImgError] = useState(false);
@@ -43,6 +44,18 @@ export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
     el.style.transform = "perspective(800px) rotateY(0deg) rotateX(0deg)";
   }, [enableTilt]);
 
+  const imageHoverClasses = isLarge
+    ? "transition-[transform,filter] duration-700 ease-out group-hover:scale-[1.01] group-hover:brightness-110"
+    : "transition-transform duration-500 ease-out group-hover:scale-[1.05]";
+
+  const overlayGradientClasses = isLarge
+    ? "from-iron-900/0 via-iron-900/20 to-iron-900/70"
+    : "from-iron-900/0 to-iron-900/60";
+
+  const featuredRingClasses = item.featured
+    ? "ring-1 ring-copper/20 hover:ring-copper/40 transition-shadow duration-500"
+    : "";
+
   return (
     <motion.div
       layout
@@ -50,32 +63,33 @@ export default function PortfolioCard({ item, onClick }: PortfolioCardProps) {
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.3 }}
+      className="h-full"
     >
       <div
         ref={cardRef}
         onClick={onClick}
         onMouseMove={handleMouseMove}
         onMouseLeave={handleMouseLeave}
-        className="group relative cursor-pointer overflow-hidden rounded-lg transition-transform duration-300 ease-out"
+        className={`group relative h-full cursor-pointer overflow-hidden rounded-lg transition-transform duration-300 ease-out ${featuredRingClasses}`}
         style={{ transformStyle: "preserve-3d" }}
       >
         {/* Image with gradient fallback */}
         {imgError ? (
           <div
-            className={`aspect-[3/4] bg-gradient-to-br ${CATEGORY_GRADIENTS[item.category]}`}
+            className={`h-full w-full bg-gradient-to-br ${CATEGORY_GRADIENTS[item.category]} ${imageHoverClasses}`}
           />
         ) : (
           <img
             src={item.imageSrc}
             alt={item.title}
             loading="lazy"
-            className="aspect-[3/4] w-full object-cover"
+            className={`h-full w-full object-cover ${imageHoverClasses}`}
             onError={() => setImgError(true)}
           />
         )}
 
         {/* Hover overlay */}
-        <div className="absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-iron-900/90 via-iron-900/40 to-transparent opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+        <div className={`absolute inset-0 flex flex-col justify-end bg-gradient-to-t ${overlayGradientClasses} opacity-0 transition-opacity duration-300 group-hover:opacity-100`}>
           {/* Amber glow */}
           <div
             className="absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
