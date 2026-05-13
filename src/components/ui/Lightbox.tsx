@@ -28,6 +28,8 @@ export default function Lightbox({
   const item = items[currentIndex];
   const [imgError, setImgError] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(initialPhotoIndex);
+  const [isZoomed, setIsZoomed] = useState(false);
+  const [zoomPosition, setZoomPosition] = useState({ x: 50, y: 50 });
   const reducedMotion = useReducedMotion();
 
   const photos =
@@ -40,11 +42,15 @@ export default function Lightbox({
   useEffect(() => {
     setPhotoIndex(0);
     setImgError(false);
+    setIsZoomed(false);
+    setZoomPosition({ x: 50, y: 50 });
   }, [currentIndex]);
 
-  // Reset image-error when photo within item changes
+  // Reset image-error + zoom when photo within item changes
   useEffect(() => {
     setImgError(false);
+    setIsZoomed(false);
+    setZoomPosition({ x: 50, y: 50 });
   }, [photoIndex]);
 
   const goItemPrev = useCallback(() => {
@@ -69,7 +75,12 @@ export default function Lightbox({
 
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
-        onClose();
+        if (isZoomed) {
+          setIsZoomed(false);
+          setZoomPosition({ x: 50, y: 50 });
+        } else {
+          onClose();
+        }
         return;
       }
       if (e.key === "ArrowLeft") {
@@ -98,7 +109,7 @@ export default function Lightbox({
       document.body.classList.remove("menu-open");
       window.removeEventListener("keydown", handleKeyDown);
     };
-  }, [onClose, goItemPrev, goItemNext, goPhotoPrev, goPhotoNext, hasMultiplePhotos]);
+  }, [onClose, goItemPrev, goItemNext, goPhotoPrev, goPhotoNext, hasMultiplePhotos, isZoomed]);
 
   if (!item) return null;
 
@@ -111,7 +122,14 @@ export default function Lightbox({
       exit={{ opacity: 0 }}
       transition={{ duration: 0.2 }}
       className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-iron-900/95 backdrop-blur-md"
-      onClick={onClose}
+      onClick={() => {
+        if (isZoomed) {
+          setIsZoomed(false);
+          setZoomPosition({ x: 50, y: 50 });
+        } else {
+          onClose();
+        }
+      }}
     >
       <motion.div
         initial={{ scale: 0.95, opacity: 0 }}
@@ -162,7 +180,37 @@ export default function Lightbox({
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: fadeDuration }}
-                      className="max-h-full max-w-full rounded-lg object-contain"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setIsZoomed((z) => !z);
+                      }}
+                      onMouseMove={(e) => {
+                        if (!isZoomed) return;
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const x = ((e.clientX - rect.left) / rect.width) * 100;
+                        const y = ((e.clientY - rect.top) / rect.height) * 100;
+                        setZoomPosition({ x, y });
+                      }}
+                      onTouchMove={(e) => {
+                        if (!isZoomed) return;
+                        e.preventDefault();
+                        const touch = e.touches[0];
+                        const rect = e.currentTarget.getBoundingClientRect();
+                        const x = ((touch.clientX - rect.left) / rect.width) * 100;
+                        const y = ((touch.clientY - rect.top) / rect.height) * 100;
+                        setZoomPosition({
+                          x: Math.max(0, Math.min(100, x)),
+                          y: Math.max(0, Math.min(100, y)),
+                        });
+                      }}
+                      className={`max-h-full max-w-full rounded-lg object-contain transition-transform duration-300 ${
+                        isZoomed ? "scale-[2.5] cursor-zoom-out" : "cursor-zoom-in"
+                      }`}
+                      style={
+                        isZoomed
+                          ? { transformOrigin: `${zoomPosition.x}% ${zoomPosition.y}%` }
+                          : undefined
+                      }
                       onError={() => setImgError(true)}
                     />
                   </AnimatePresence>
