@@ -79,14 +79,14 @@ export default function NewestWork() {
           {...slideLeft}
           type="button"
           onClick={() => openLightbox(0)}
-          className="md:col-span-3 group relative overflow-hidden rounded-lg bg-iron-800 aspect-[4/3] focus:outline-none focus:ring-2 focus:ring-copper"
+          className="md:col-span-3 group block w-full bg-iron-800 rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-copper"
           aria-label={`Open ${newestItem.title} in lightbox`}
         >
           <img
             src={newestItem.imageSrc}
             alt={newestItem.title}
             loading="lazy"
-            className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+            className="w-full h-auto object-contain rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.02]"
           />
         </motion.button>
 
