@@ -18,9 +18,27 @@ export interface PortfolioItem {
   material: string;
   // Optional gallery — when present, images[0] must equal imageSrc.
   images?: string[];
+  isNew?: boolean;
 }
 
 export const portfolioItems: PortfolioItem[] = [
+  {
+    id: "ridderspoor",
+    title: "Ridderspoor",
+    category: "bloemen",
+    description:
+      "Handgesmede ridderspoor (delphinium) van staal en koper. Tientallen individueel gevormde bloemblaadjes met prachtige hittetinten in blauw, paars en koper. De stengel en bladeren zijn van gepatineerd koper met een natuurlijk turquoise-groen patina. Gepresenteerd in een stenen potje.",
+    imageSrc: "/images/portfolio/ridderspoor.jpg",
+    featured: true,
+    isNew: true,
+    material: "Staal & koper",
+    images: [
+      "/images/portfolio/ridderspoor.jpg",
+      "/images/portfolio/ridderspoor-2.jpg",
+      "/images/portfolio/ridderspoor-3.jpg",
+      "/images/portfolio/ridderspoor-4.jpg",
+    ],
+  },
   {
     id: "koperen-tulpenboeket",
     title: "Koperen Tulpenboeket",

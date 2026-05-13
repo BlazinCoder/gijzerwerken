@@ -10,6 +10,7 @@ import {
 } from "@/data/portfolio";
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import Lightbox from "@/components/ui/Lightbox";
+import NewestWork from "@/components/sections/NewestWork";
 
 type FilterCategory = Category | "all";
 
@@ -60,6 +61,9 @@ export default function PortfolioContent() {
           verhaal
         </motion.p>
       </div>
+
+      {/* Nieuwste werk spotlight */}
+      <NewestWork />
 
       {/* Filter pills */}
       <motion.div

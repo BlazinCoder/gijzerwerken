@@ -15,6 +15,7 @@ interface LightboxProps {
   currentIndex: number;
   onClose: () => void;
   onNavigate: (index: number) => void;
+  initialPhotoIndex?: number;
 }
 
 export default function Lightbox({
@@ -22,10 +23,11 @@ export default function Lightbox({
   currentIndex,
   onClose,
   onNavigate,
+  initialPhotoIndex = 0,
 }: LightboxProps) {
   const item = items[currentIndex];
   const [imgError, setImgError] = useState(false);
-  const [photoIndex, setPhotoIndex] = useState(0);
+  const [photoIndex, setPhotoIndex] = useState(initialPhotoIndex);
   const reducedMotion = useReducedMotion();
 
   const photos =
