@@ -75,19 +75,6 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
   {
-    id: "zwevende-gieter",
-    title: "Zwevende Gieter",
-    category: "sculpturen",
-    description:
-      "Tijdens mijn rondreis door Nieuw-Zeeland heb ik dit kunstwerk gemaakt van gerecycled materiaal, met dank aan Burkes Pass Vintage Store. Een zwevende gieter waarbij het water wordt gesuggereerd door gelaste kettingschakels.",
-    imageSrc: "/images/portfolio/gieter.jpg",
-    featured: true,
-    material: "Staal & ketting",
-    images: [
-      "/images/portfolio/gieter.jpg",
-    ],
-  },
-  {
     id: "honda-zwaan",
     title: "Honda Zwaan",
     category: "sculpturen",
@@ -114,6 +101,19 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
   {
+    id: "zwevende-gieter",
+    title: "Zwevende Gieter",
+    category: "sculpturen",
+    description:
+      "Tijdens mijn rondreis door Nieuw-Zeeland heb ik dit kunstwerk gemaakt van gerecycled materiaal, met dank aan Burkes Pass Vintage Store. Een zwevende gieter waarbij het water wordt gesuggereerd door gelaste kettingschakels.",
+    imageSrc: "/images/portfolio/gieter.jpg",
+    featured: true,
+    material: "Staal & ketting",
+    images: [
+      "/images/portfolio/gieter.jpg",
+    ],
+  },
+  {
     id: "waratah-bloem",
     title: "Waratah Bloem",
     category: "bloemen",
@@ -126,6 +126,19 @@ export const portfolioItems: PortfolioItem[] = [
       "/images/portfolio/waratah.jpg",
       "/images/portfolio/waratah-2.jpg",
       "/images/portfolio/waratah-3.jpg",
+    ],
+  },
+  {
+    id: "gesmede-roos-zwart",
+    title: "Gesmede Roos Zwart",
+    category: "bloemen",
+    description:
+      "Elegante zwart gesmede roos met steel en bladeren. Tijdloos cadeau, hier gefotografeerd tussen verse bloemen op een feesttafel.",
+    imageSrc: "/images/portfolio/roos-zwart.jpg",
+    featured: false,
+    material: "Zwart gesmeed staal",
+    images: [
+      "/images/portfolio/roos-zwart.jpg",
     ],
   },
   {
@@ -154,22 +167,6 @@ export const portfolioItems: PortfolioItem[] = [
     images: [
       "/images/portfolio/deur.jpg",
       "/images/portfolio/deur-2.jpg",
-    ],
-  },
-  {
-    id: "rvs-schoorsteenkap",
-    title: "Stalen Schoorsteenkap",
-    category: "maatwerk",
-    description:
-      "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van staal met een Shamrock als bekroning.",
-    imageSrc: "/images/portfolio/schoorsteenkap.jpg",
-    featured: false,
-    material: "Staal & gesmeed staal",
-    images: [
-      "/images/portfolio/schoorsteenkap.jpg",
-      "/images/portfolio/schoorsteenkap-2.jpg",
-      "/images/portfolio/schoorsteenkap-3.jpg",
-      "/images/portfolio/schoorsteenkap-4.jpg",
     ],
   },
   {
@@ -218,19 +215,6 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
   {
-    id: "gesmede-roos-zwart",
-    title: "Gesmede Roos Zwart",
-    category: "bloemen",
-    description:
-      "Elegante zwart gesmede roos met steel en bladeren. Tijdloos cadeau, hier gefotografeerd tussen verse bloemen op een feesttafel.",
-    imageSrc: "/images/portfolio/roos-zwart.jpg",
-    featured: false,
-    material: "Zwart gesmeed staal",
-    images: [
-      "/images/portfolio/roos-zwart.jpg",
-    ],
-  },
-  {
     id: "handgemaakte-smoker",
     title: "Handgemaakte Smoker",
     category: "maatwerk",
@@ -254,6 +238,22 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Staal & gebrand hout",
     images: [
       "/images/portfolio/barkrukken.jpg",
+    ],
+  },
+  {
+    id: "rvs-schoorsteenkap",
+    title: "Stalen Schoorsteenkap",
+    category: "maatwerk",
+    description:
+      "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van staal met een Shamrock als bekroning.",
+    imageSrc: "/images/portfolio/schoorsteenkap.jpg",
+    featured: false,
+    material: "Staal & gesmeed staal",
+    images: [
+      "/images/portfolio/schoorsteenkap.jpg",
+      "/images/portfolio/schoorsteenkap-2.jpg",
+      "/images/portfolio/schoorsteenkap-3.jpg",
+      "/images/portfolio/schoorsteenkap-4.jpg",
     ],
   },
 ];

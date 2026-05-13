@@ -55,8 +55,8 @@ export default function NewestWork() {
       };
 
   return (
-    <section className="max-w-7xl mx-auto py-12 md:py-16">
-      <motion.div {...fadeIn} className="flex items-center gap-2 mb-8">
+    <section className="max-w-7xl mx-auto py-8 md:py-10">
+      <motion.div {...fadeIn} className="flex items-center gap-2 mb-6">
         <svg
           width="16"
           height="16"
@@ -74,30 +74,30 @@ export default function NewestWork() {
         </span>
       </motion.div>
 
-      <div className="grid grid-cols-1 md:grid-cols-5 gap-8 md:gap-10 items-start">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
         <motion.button
           {...slideLeft}
           type="button"
           onClick={() => openLightbox(0)}
-          className="md:col-span-3 group block w-full bg-iron-800 rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-copper"
+          className="group block w-full bg-iron-800 rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-copper"
           aria-label={`Open ${newestItem.title} in lightbox`}
         >
           <img
             src={newestItem.imageSrc}
             alt={newestItem.title}
             loading="lazy"
-            className="w-full h-auto object-contain rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+            className="w-full max-h-[500px] object-cover rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.02]"
           />
         </motion.button>
 
-        <motion.div {...slideRight} className="md:col-span-2 flex flex-col">
-          <h2 className="font-playfair text-3xl md:text-4xl text-cream">
+        <motion.div {...slideRight} className="flex flex-col">
+          <h2 className="font-playfair text-2xl md:text-3xl text-cream">
             {newestItem.title}
           </h2>
           <p className="mt-2 text-sm tracking-widest uppercase text-copper">
             {newestItem.material}
           </p>
-          <p className="mt-4 text-base text-cream/80 leading-relaxed">
+          <p className="mt-4 text-sm text-cream/80 leading-relaxed line-clamp-3">
             {newestItem.description}
           </p>
 
@@ -145,7 +145,7 @@ export default function NewestWork() {
         </motion.div>
       </div>
 
-      <div className="mt-12 md:mt-16 h-px bg-gradient-to-r from-transparent via-copper/40 to-transparent" />
+      <div className="mt-8 md:mt-10 h-px bg-gradient-to-r from-transparent via-copper/40 to-transparent" />
 
       {lightboxOpen && (
         <Lightbox

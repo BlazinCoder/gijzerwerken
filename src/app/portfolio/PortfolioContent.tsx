@@ -7,6 +7,7 @@ import {
   CATEGORIES,
   CATEGORY_LABELS,
   type Category,
+  type PortfolioItem,
 } from "@/data/portfolio";
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import Lightbox from "@/components/ui/Lightbox";
@@ -24,19 +25,25 @@ const FILTER_OPTIONS: { value: FilterCategory; label: string }[] = [
 
 type GridConfig = { classes: string; isLarge: boolean };
 
-const GRID_PATTERNS: Record<number, GridConfig> = {
-  0: { classes: "col-span-2 row-span-1 md:col-span-2 md:row-span-2 min-h-[280px] md:min-h-0", isLarge: true },
-  1: { classes: "md:mt-6", isLarge: false },
-  2: { classes: "md:row-span-2", isLarge: true },
-  4: { classes: "md:col-span-2", isLarge: true },
-  5: { classes: "md:mt-4", isLarge: false },
-  7: { classes: "md:row-span-2", isLarge: true },
-  8: { classes: "md:mt-6", isLarge: false },
-  9: { classes: "md:col-span-2", isLarge: true },
-};
+function getGridConfig(item: PortfolioItem): GridConfig {
+  if (item.category === "bloemen") {
+    if (item.featured) {
+      return {
+        classes: "col-span-2 row-span-2 md:col-span-2 md:row-span-2",
+        isLarge: true,
+      };
+    }
+    return { classes: "md:row-span-2", isLarge: true };
+  }
 
-function getGridConfig(index: number): GridConfig {
-  return GRID_PATTERNS[index] ?? { classes: "", isLarge: false };
+  if (item.category === "sculpturen" && item.featured) {
+    return {
+      classes: "col-span-2 row-span-2 md:col-span-2 md:row-span-2",
+      isLarge: true,
+    };
+  }
+
+  return { classes: "col-span-1 row-span-1", isLarge: false };
 }
 
 function QuoteCard() {
@@ -148,7 +155,7 @@ export default function PortfolioContent() {
       <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-dense gap-3 md:gap-5 max-w-7xl mx-auto md:auto-rows-[260px]">
         <AnimatePresence mode="popLayout">
           {filteredItems.flatMap((item, index) => {
-            const cfg = getGridConfig(index);
+            const cfg = getGridConfig(item);
             const elements = [
               <motion.div
                 key={item.id}
@@ -168,7 +175,7 @@ export default function PortfolioContent() {
                 />
               </motion.div>,
             ];
-            if (index === 6 && filteredItems.length > 7) {
+            if (index === 7 && filteredItems.length > 8) {
               elements.push(<QuoteCard key="quote-card" />);
             }
             return elements;
