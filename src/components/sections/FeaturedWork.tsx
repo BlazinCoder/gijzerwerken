@@ -11,7 +11,7 @@ export default function FeaturedWork() {
   const router = useRouter();
 
   const featuredItems = useMemo(
-    () => portfolioItems.filter((item) => item.featured).slice(0, 4),
+    () => portfolioItems.filter((item) => item.featured).slice(0, 3),
     []
   );
 

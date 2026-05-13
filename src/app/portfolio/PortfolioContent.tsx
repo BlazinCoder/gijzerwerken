@@ -25,25 +25,37 @@ const FILTER_OPTIONS: { value: FilterCategory; label: string }[] = [
 
 type GridConfig = { classes: string; isLarge: boolean };
 
-function getGridConfig(item: PortfolioItem): GridConfig {
-  if (item.category === "bloemen") {
-    if (item.featured) {
+function getGridConfig(item: PortfolioItem, index: number): GridConfig {
+  if (item.category === "bloemen" && item.featured) {
+    if (index === 0) {
       return {
-        classes: "col-span-2 row-span-2 md:col-span-2 md:row-span-2",
+        classes: "col-span-2 md:col-span-2 md:row-span-2",
         isLarge: true,
       };
     }
-    return { classes: "md:row-span-2", isLarge: true };
-  }
-
-  if (item.category === "sculpturen" && item.featured) {
+    if (index === 1) {
+      return {
+        classes: "col-span-2 md:col-span-2",
+        isLarge: true,
+      };
+    }
     return {
-      classes: "col-span-2 row-span-2 md:col-span-2 md:row-span-2",
+      classes: "md:row-span-2",
       isLarge: true,
     };
   }
 
-  return { classes: "col-span-1 row-span-1", isLarge: false };
+  if (item.category === "bloemen") {
+    return {
+      classes: "md:row-span-2",
+      isLarge: true,
+    };
+  }
+
+  return {
+    classes: "col-span-1 row-span-1",
+    isLarge: false,
+  };
 }
 
 function QuoteCard() {
@@ -155,7 +167,7 @@ export default function PortfolioContent() {
       <div className="mt-12 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 grid-flow-dense gap-3 md:gap-5 max-w-7xl mx-auto md:auto-rows-[260px]">
         <AnimatePresence mode="popLayout">
           {filteredItems.flatMap((item, index) => {
-            const cfg = getGridConfig(item);
+            const cfg = getGridConfig(item, index);
             const elements = [
               <motion.div
                 key={item.id}

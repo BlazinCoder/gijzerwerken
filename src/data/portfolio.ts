@@ -81,7 +81,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Zwaan gemaakt van een oude Honda-motortank als lijf en een zware motorketting als sierlijke nek. Upcycling in zijn puurste vorm.",
     imageSrc: "/images/portfolio/honda-zwaan.jpg",
-    featured: true,
+    featured: false,
     material: "Honda-motortank & motorketting",
     images: [
       "/images/portfolio/honda-zwaan.jpg",
@@ -107,7 +107,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Tijdens mijn rondreis door Nieuw-Zeeland heb ik dit kunstwerk gemaakt van gerecycled materiaal, met dank aan Burkes Pass Vintage Store. Een zwevende gieter waarbij het water wordt gesuggereerd door gelaste kettingschakels.",
     imageSrc: "/images/portfolio/gieter.jpg",
-    featured: true,
+    featured: false,
     material: "Staal & ketting",
     images: [
       "/images/portfolio/gieter.jpg",
