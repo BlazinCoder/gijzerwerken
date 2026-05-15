@@ -57,15 +57,12 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
+        className={`fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-500 ${
           showSolid
             ? "bg-iron-900/95 backdrop-blur-md border-b border-iron-700/50"
             : "bg-transparent"
         }`}
-        style={{
-          paddingTop: "env(safe-area-inset-top)",
-          transitionTimingFunction: "cubic-bezier(0.25,0.46,0.45,0.94)",
-        }}
+        style={{ transitionTimingFunction: "cubic-bezier(0.25,0.46,0.45,0.94)" }}
       >
         <div className="max-w-7xl mx-auto px-6 pt-2 pb-5 sm:pt-5 flex items-center justify-between">
           {/* Logo */}
