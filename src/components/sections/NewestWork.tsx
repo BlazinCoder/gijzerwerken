@@ -97,7 +97,7 @@ export default function NewestWork() {
           <p className="mt-2 text-sm tracking-widest uppercase text-copper">
             {newestItem.material}
           </p>
-          <p className="mt-4 text-sm text-cream/80 leading-relaxed line-clamp-3">
+          <p className="mt-4 text-sm text-cream/80 leading-relaxed">
             {newestItem.description}
           </p>
 
