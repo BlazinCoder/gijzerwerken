@@ -4,6 +4,8 @@ import { useEffect, useCallback, useRef, useState } from "react";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { PortfolioItem, Category } from "@/data/portfolio";
 
+const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
 const CATEGORY_GRADIENTS: Record<Category, string> = {
   sculpturen: "from-iron-700 via-iron-800 to-copper-dark",
   bloemen: "from-copper via-copper-light to-ember-glow",
@@ -110,14 +112,14 @@ export default function Lightbox({
 
   if (!item) return null;
 
-  const fadeDuration = reducedMotion ? 0 : 0.2;
+  const fadeDuration = reducedMotion ? 0 : 0.3;
 
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      transition={{ duration: 0.2 }}
+      transition={{ duration: 0.3, ease: APPLE_EASE }}
       className="fixed inset-0 z-[60] flex items-center justify-center overflow-y-auto bg-iron-900/95 backdrop-blur-md"
       onClick={onClose}
     >
@@ -125,7 +127,7 @@ export default function Lightbox({
         initial={{ scale: 0.95, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         exit={{ scale: 0.95, opacity: 0 }}
-        transition={{ duration: 0.2 }}
+        transition={{ duration: 0.3, ease: APPLE_EASE }}
         onClick={(e) => e.stopPropagation()}
         className="relative my-8 flex w-full max-w-6xl flex-col gap-6 px-6 md:gap-8"
       >
@@ -170,7 +172,7 @@ export default function Lightbox({
                       initial={{ opacity: 0 }}
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
-                      transition={{ duration: fadeDuration }}
+                      transition={{ duration: fadeDuration, ease: APPLE_EASE }}
                       onMouseEnter={() => setLensVisible(true)}
                       onMouseLeave={() => setLensVisible(false)}
                       onMouseMove={(e) => {

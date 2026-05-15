@@ -28,7 +28,7 @@ export default function Footer() {
             href="https://instagram.com/gijzerwerken"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm tracking-widest uppercase text-cream/50 hover:text-copper transition-colors duration-300"
+            className="text-sm tracking-widest uppercase text-cream/50 hover:text-copper transition-all duration-300 active:scale-[0.97]"
           >
             @gijzerwerken
           </a>

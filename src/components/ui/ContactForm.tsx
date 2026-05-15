@@ -335,7 +335,7 @@ export default function ContactForm({
         <button
           type="submit"
           disabled={formState === "submitting"}
-          className="inline-flex items-center gap-2 rounded-lg bg-copper px-8 py-3 text-sm font-semibold tracking-widest uppercase text-iron-900 transition-colors duration-300 hover:bg-copper-light disabled:cursor-not-allowed disabled:opacity-50"
+          className="inline-flex items-center gap-2 rounded-lg bg-copper px-8 py-3 text-sm font-semibold tracking-widest uppercase text-iron-900 transition-all duration-150 hover:bg-copper-light active:scale-[0.97] disabled:cursor-not-allowed disabled:opacity-50"
         >
           {formState === "submitting" ? (
             <>

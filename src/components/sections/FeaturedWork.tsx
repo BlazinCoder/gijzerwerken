@@ -7,6 +7,8 @@ import { portfolioItems } from "@/data/portfolio";
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import { useRouter } from "next/navigation";
 
+const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
 export default function FeaturedWork() {
   const router = useRouter();
 
@@ -20,10 +22,10 @@ export default function FeaturedWork() {
       <div className="max-w-7xl mx-auto">
         {/* Section header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: APPLE_EASE }}
           className="text-center"
         >
           <h2 className="font-playfair text-3xl md:text-5xl text-cream">
@@ -37,10 +39,10 @@ export default function FeaturedWork() {
           {featuredItems.map((item, index) => (
             <motion.div
               key={item.id}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: index * 0.15 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.15, ease: APPLE_EASE }}
             >
               <PortfolioCard
                 item={item}
@@ -56,13 +58,13 @@ export default function FeaturedWork() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, delay: 0.6, ease: APPLE_EASE }}
           className="mt-12 text-center"
         >
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-copper transition-colors hover:text-copper-light"
+            className="inline-flex items-center gap-2 text-sm tracking-widest uppercase text-copper transition-colors hover:text-copper-light active:scale-[0.97]"
           >
             Bekijk alle werken
             <span>&rarr;</span>

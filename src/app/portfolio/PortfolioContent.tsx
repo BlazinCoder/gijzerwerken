@@ -13,6 +13,8 @@ import PortfolioCard from "@/components/ui/PortfolioCard";
 import Lightbox from "@/components/ui/Lightbox";
 import NewestWork from "@/components/sections/NewestWork";
 
+const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
 type FilterCategory = Category | "all";
 
 const FILTER_OPTIONS: { value: FilterCategory; label: string }[] = [
@@ -64,8 +66,8 @@ function QuoteCard() {
       className="col-span-1 row-span-1 min-h-[200px] md:min-h-0 flex h-full flex-col items-center justify-center rounded-lg border border-iron-700 bg-iron-800 p-8 text-center"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.6, ease: APPLE_EASE }}
     >
       <svg
         width="24"
@@ -113,17 +115,17 @@ export default function PortfolioContent() {
       {/* Page header */}
       <div className="text-center">
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.6, ease: APPLE_EASE }}
           className="font-playfair text-4xl md:text-6xl text-cream"
         >
           Portfolio
         </motion.h1>
         <motion.p
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.6, delay: 0.1, ease: APPLE_EASE }}
           className="mt-4 text-sm tracking-widest uppercase text-cream/50 max-w-xl mx-auto"
         >
           Van ruwe grondstof tot verfijnd kunstwerk — elk stuk vertelt zijn eigen
@@ -138,14 +140,14 @@ export default function PortfolioContent() {
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, delay: 0.3 }}
+        transition={{ duration: 0.5, delay: 0.3, ease: APPLE_EASE }}
         className="mt-10 flex justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide pb-2"
       >
         {FILTER_OPTIONS.map((option) => (
           <button
             key={option.value}
             onClick={() => setActiveCategory(option.value)}
-            className={`relative px-4 py-2 text-sm tracking-widest uppercase transition-colors duration-300 ${
+            className={`relative px-4 py-2 text-sm tracking-widest uppercase transition-all duration-300 active:scale-[0.97] ${
               activeCategory === option.value
                 ? "text-copper"
                 : "text-cream/50 hover:text-cream/70"
@@ -172,12 +174,13 @@ export default function PortfolioContent() {
               <motion.div
                 key={item.id}
                 className={`col-span-1 row-span-1 min-h-[200px] md:min-h-0 ${cfg.classes}`}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
+                viewport={{ once: true, amount: 0.2 }}
                 transition={{
                   duration: 0.6,
                   delay: Math.min(index * 0.08, 0.5),
+                  ease: APPLE_EASE,
                 }}
               >
                 <PortfolioCard

@@ -4,6 +4,8 @@ import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import ContactForm from "@/components/ui/ContactForm";
 
+const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
 const INFO_ITEMS = [
   {
     label: "Locatie",
@@ -108,8 +110,8 @@ export default function ContactContent() {
                 key={item.label}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.5, delay: i * 0.15 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.5, delay: i * 0.15, ease: APPLE_EASE }}
                 className="mb-8 flex items-start gap-4"
               >
                 <div className="mt-1 flex-shrink-0">{item.icon}</div>
@@ -143,8 +145,8 @@ export default function ContactContent() {
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.5, delay: 0.45 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.5, delay: 0.45, ease: APPLE_EASE }}
               className="mt-4 aspect-[4/3] overflow-hidden rounded-lg border border-iron-700/30 bg-iron-800"
             >
               <img

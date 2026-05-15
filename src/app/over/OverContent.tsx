@@ -5,6 +5,8 @@ import SectionHeader from "@/components/ui/SectionHeader";
 import AnimatedCounter from "@/components/ui/AnimatedCounter";
 import ParallaxImage from "@/components/ui/ParallaxImage";
 
+const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
 const WORKSHOP_IMAGES = [
   { src: "/images/portfolio/roos-moederdag.jpg", alt: "Cortenstaal roos" },
   { src: "/images/portfolio/smoker.jpg", alt: "Handgemaakte smoker" },
@@ -32,10 +34,10 @@ export default function OverContent() {
             />
           </div>
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
+            initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.6 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ duration: 0.6, ease: APPLE_EASE }}
           >
             <h1 className="font-playfair text-4xl md:text-6xl text-cream">
               Gijs Gonlag
@@ -61,10 +63,10 @@ export default function OverContent() {
             ].map((text, i) => (
               <motion.p
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: APPLE_EASE }}
                 className="text-cream/70 leading-relaxed"
               >
                 {text}
@@ -82,10 +84,10 @@ export default function OverContent() {
             {WORKSHOP_IMAGES.map((image, i) => (
               <motion.div
                 key={i}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-100px" }}
-                transition={{ duration: 0.6, delay: i * 0.1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.6, delay: i * 0.1, ease: APPLE_EASE }}
               >
                 <ParallaxImage imageSrc={image.src} alt={image.alt} gradient="from-iron-700 via-iron-800 to-copper-dark" />
               </motion.div>
@@ -100,10 +102,10 @@ export default function OverContent() {
           {FACTS.map((fact, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-100px" }}
-              transition={{ duration: 0.6, delay: i * 0.1 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: i * 0.1, ease: APPLE_EASE }}
               className="text-center"
             >
               <div className="font-playfair text-4xl md:text-5xl text-copper">
@@ -129,10 +131,10 @@ export default function OverContent() {
       {/* Instagram CTA */}
       <section className="py-20 px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: APPLE_EASE }}
         >
           <p className="font-playfair text-2xl md:text-3xl text-cream">
             Volg het proces op Instagram
@@ -141,7 +143,7 @@ export default function OverContent() {
             href="https://instagram.com/gijzerwerken"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 mt-6 text-copper hover:text-copper-light transition-colors text-sm tracking-widest uppercase"
+            className="inline-flex items-center gap-2 mt-6 text-copper hover:text-copper-light transition-all duration-150 active:scale-[0.97] text-sm tracking-widest uppercase"
           >
             @gijzerwerken
             <svg

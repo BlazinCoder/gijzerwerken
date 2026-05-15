@@ -4,6 +4,8 @@ import { useRef } from "react";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 
+const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
+
 interface ProcessStep {
   number: string;
   title: string;
@@ -71,16 +73,16 @@ function TimelineStep({
         initial={{ backgroundColor: "#2a2a2a", scale: 0.5 }}
         whileInView={{ backgroundColor: "#c47a2a", scale: 1 }}
         viewport={{ once: true, amount: 0.5 }}
-        transition={{ duration: 0.4 }}
+        transition={{ duration: 0.4, ease: APPLE_EASE }}
         className="absolute left-4 md:left-1/2 -translate-x-1/2 top-0 w-4 h-4 rounded-full border-2 border-iron-900 z-10"
       />
 
       {/* Content */}
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
+        initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: APPLE_EASE }}
         className="ml-12 md:ml-0 md:grid md:grid-cols-2 md:gap-12"
       >
         {/* Image */}
@@ -134,10 +136,10 @@ export default function ProcesContent() {
       {/* Header */}
       <section className="pt-32 pb-12 px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: APPLE_EASE }}
           className="text-center"
         >
           <h1 className="font-playfair text-3xl md:text-5xl text-cream">
@@ -172,17 +174,17 @@ export default function ProcesContent() {
       {/* CTA */}
       <section className="py-20 px-6 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6, ease: APPLE_EASE }}
         >
           <h2 className="font-playfair text-3xl md:text-4xl text-cream">
             Eigen idee?
           </h2>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 mt-6 text-sm tracking-widest uppercase text-copper hover:text-copper-light transition-colors"
+            className="inline-flex items-center gap-2 mt-6 text-sm tracking-widest uppercase text-copper hover:text-copper-light transition-all duration-150 active:scale-[0.97]"
           >
             Neem contact op
             <svg
