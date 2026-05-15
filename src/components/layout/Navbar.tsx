@@ -29,18 +29,9 @@ const menuItemVariants = {
 };
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
   const prefersReduced = useReducedMotion();
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   useEffect(() => {
     if (menuOpen) {
@@ -51,27 +42,10 @@ export default function Navbar() {
     return () => document.body.classList.remove("menu-open");
   }, [menuOpen]);
 
-  const isHome = pathname === "/";
-  const showSolid = scrolled || !isHome;
-
   return (
     <>
-      {/* Safe-area filler — vult de notch-zone met solid kleur zodat content
-          er niet doorheen schijnt tijdens scrollen (backdrop-blur bug op iOS Safari) */}
-      <div
-        className={`fixed top-0 left-0 right-0 z-50 pointer-events-none transition-colors duration-500 ${
-          showSolid ? "bg-iron-900" : "bg-transparent"
-        }`}
-        style={{ height: "env(safe-area-inset-top)" }}
-        aria-hidden="true"
-      />
       <nav
-        className={`fixed left-0 right-0 top-[env(safe-area-inset-top)] z-50 transition-all duration-500 ${
-          showSolid
-            ? "bg-iron-900/95 backdrop-blur-md border-b border-iron-700/50"
-            : "bg-transparent"
-        }`}
-        style={{ transitionTimingFunction: "cubic-bezier(0.25,0.46,0.45,0.94)" }}
+        className="fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] bg-iron-900 border-b border-iron-700/50"
       >
         <div className="max-w-7xl mx-auto px-6 py-3 sm:py-5 flex items-center justify-between">
           {/* Logo */}
