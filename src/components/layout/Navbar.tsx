@@ -56,15 +56,24 @@ export default function Navbar() {
 
   return (
     <>
+      {/* Safe-area filler — vult de notch-zone met solid kleur zodat content
+          er niet doorheen schijnt tijdens scrollen (backdrop-blur bug op iOS Safari) */}
+      <div
+        className={`fixed top-0 left-0 right-0 z-50 pointer-events-none transition-colors duration-500 ${
+          showSolid ? "bg-iron-900" : "bg-transparent"
+        }`}
+        style={{ height: "env(safe-area-inset-top)" }}
+        aria-hidden="true"
+      />
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-500 ${
+        className={`fixed left-0 right-0 top-[env(safe-area-inset-top)] z-50 transition-all duration-500 ${
           showSolid
             ? "bg-iron-900/95 backdrop-blur-md border-b border-iron-700/50"
             : "bg-transparent"
         }`}
         style={{ transitionTimingFunction: "cubic-bezier(0.25,0.46,0.45,0.94)" }}
       >
-        <div className="max-w-7xl mx-auto px-6 pt-2 pb-5 sm:pt-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 py-3 sm:py-5 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="block">
             <img
