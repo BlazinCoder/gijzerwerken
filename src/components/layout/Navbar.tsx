@@ -36,7 +36,7 @@ export default function Navbar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] transition-all duration-500 ${
         scrolled
           ? "bg-iron-900/95 backdrop-blur-md border-b border-iron-700/50"
           : "bg-transparent"
@@ -103,13 +103,13 @@ export default function Navbar() {
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeOut" }}
-            className="md:hidden absolute top-full left-0 right-0 bg-iron-900/98 backdrop-blur-md border-b border-iron-700/50"
+            className="md:hidden fixed inset-0 z-40 bg-[#0a0a0a] pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
           >
-            <ul className="flex flex-col items-center py-8 gap-6">
+            <ul className="flex flex-col items-center justify-center min-h-screen gap-8 px-6">
               {navLinks.map((link, i) => {
                 const isActive = pathname === link.href;
                 return (
@@ -117,12 +117,12 @@ export default function Navbar() {
                     key={link.href}
                     initial={{ opacity: 0, y: -10 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.05, duration: 0.3 }}
+                    transition={{ delay: 0.1 + i * 0.05, duration: 0.3 }}
                   >
                     <Link
                       href={link.href}
                       aria-current={isActive ? "page" : undefined}
-                      className={`text-sm tracking-widest uppercase transition-colors duration-300 ${
+                      className={`text-2xl tracking-widest uppercase transition-colors duration-300 ${
                         isActive
                           ? "text-copper-light drop-shadow-[0_0_8px_rgba(232,168,73,0.6)]"
                           : "text-cream/70 hover:text-copper"
