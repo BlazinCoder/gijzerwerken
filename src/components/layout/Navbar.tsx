@@ -67,7 +67,7 @@ export default function Navbar() {
           transitionTimingFunction: "cubic-bezier(0.25,0.46,0.45,0.94)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6 py-5 flex items-center justify-between">
+        <div className="max-w-7xl mx-auto px-6 pt-2 pb-5 sm:pt-5 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="block">
             <img
