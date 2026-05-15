@@ -111,7 +111,7 @@ export default function PortfolioContent() {
   }, [activeCategory]);
 
   return (
-    <div className="min-h-screen pt-24 pb-16 px-6">
+    <div className="min-h-screen pt-[calc(env(safe-area-inset-top)+6rem)] pb-16 px-6">
       {/* Page header */}
       <div className="text-center">
         <motion.h1

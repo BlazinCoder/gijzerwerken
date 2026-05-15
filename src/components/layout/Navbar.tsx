@@ -51,11 +51,14 @@ export default function Navbar() {
     return () => document.body.classList.remove("menu-open");
   }, [menuOpen]);
 
+  const isHome = pathname === "/";
+  const showSolid = scrolled || !isHome;
+
   return (
     <>
       <nav
         className={`fixed top-0 left-0 right-0 z-40 pt-[env(safe-area-inset-top)] transition-all duration-500 ${
-          scrolled
+          showSolid
             ? "bg-iron-900/95 backdrop-blur-md border-b border-iron-700/50"
             : "bg-transparent"
         }`}
