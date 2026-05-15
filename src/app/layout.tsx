@@ -21,6 +21,7 @@ export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
   viewportFit: "cover",
+  themeColor: "#0a0a0a",
 };
 
 export const metadata: Metadata = {
@@ -99,7 +100,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="nl" className={`${playfair.variable} ${inter.variable}`}>
+    <html lang="nl" className={`${playfair.variable} ${inter.variable} bg-iron-900`}>
       <body className="font-inter antialiased bg-iron-900 text-cream">
         <ForgeSparks />
         <Navbar />
