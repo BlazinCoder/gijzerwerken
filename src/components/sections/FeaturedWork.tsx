@@ -5,13 +5,10 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import { portfolioItems } from "@/data/portfolio";
 import PortfolioCard from "@/components/ui/PortfolioCard";
-import { useRouter } from "next/navigation";
 
 const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
 export default function FeaturedWork() {
-  const router = useRouter();
-
   const featuredItems = useMemo(
     () => portfolioItems.filter((item) => item.featured).slice(0, 3),
     []
@@ -44,12 +41,7 @@ export default function FeaturedWork() {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.6, delay: index * 0.15, ease: APPLE_EASE }}
             >
-              <PortfolioCard
-                item={item}
-                onClick={() =>
-                  router.push(`/portfolio?categorie=${item.category}`)
-                }
-              />
+              <PortfolioCard item={item} linkToDetail />
             </motion.div>
           ))}
         </div>

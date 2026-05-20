@@ -186,6 +186,8 @@ export default function PortfolioContent() {
                 <PortfolioCard
                   item={item}
                   isLarge={cfg.isLarge}
+                  linkToDetail
+                  showPreviewButton
                   onClick={() => setLightboxIndex(index)}
                 />
               </motion.div>,

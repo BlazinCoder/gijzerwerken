@@ -257,3 +257,11 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
 ];
+
+export function getPortfolioItemBySlug(slug: string): PortfolioItem | undefined {
+  return portfolioItems.find((item) => item.id === slug);
+}
+
+export function getAllPortfolioSlugs(): string[] {
+  return portfolioItems.map((item) => item.id);
+}
