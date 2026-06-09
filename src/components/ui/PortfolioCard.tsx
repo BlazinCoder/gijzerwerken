@@ -95,6 +95,13 @@ export default function PortfolioCard({
         />
       )}
 
+      {/* Verkocht-chip — linksboven, want de preview-knop bezet rechtsboven */}
+      {item.isSold && (
+        <span className="pointer-events-none absolute top-3 left-3 z-10 rounded-sm bg-rust/90 px-2.5 py-1 text-[10px] md:text-xs font-medium uppercase tracking-[0.2em] text-cream shadow-md backdrop-blur-[2px]">
+          Verkocht
+        </span>
+      )}
+
       {/* Preview (lightbox) button */}
       {showPreviewButton && onClick && (
         <button

@@ -25,6 +25,7 @@ export interface PortfolioItem {
   // Optional gallery — when present, images[0] must equal imageSrc.
   images?: string[];
   isNew?: boolean;
+  isSold?: boolean;
   // Optional making-of story, rendered on the detail page when present.
   process?: ProcessStep[];
 }
@@ -164,6 +165,7 @@ export const portfolioItems: PortfolioItem[] = [
       "Uit gerecycled staal groeide deze zonnebloem. Elk blad met de hand gebogen, gevormd door vuur, met een eigen karakter. De kern zwart gebrand, zoals de zaden van een echte zonnebloem. Het idee werd geboren in Australië, tijdens een gesprek met een kunstenares die zonnebloemen schilderde — wat ooit restmateriaal was, kreeg zo een nieuw leven. Nu staat ze in een oude Nederlandse melkbus uit 1956: een herinnering aan vroeger, gecombineerd met iets dat nooit verwelkt. Een bloem van tijd, vuur en aandacht.",
     imageSrc: "/images/portfolio/zonnebloem.jpg",
     featured: true,
+    isSold: true,
     material: "Gesmeed staal",
     images: [
       "/images/portfolio/zonnebloem.jpg",

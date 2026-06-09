@@ -140,11 +140,16 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.18, ease: APPLE_EASE }}
-              className="mt-4"
+              className="mt-4 flex flex-wrap items-center gap-3"
             >
               <span className="inline-block rounded-full border border-copper/30 bg-copper/10 px-4 py-1 text-sm text-copper">
                 {CATEGORY_LABELS[item.category]}
               </span>
+              {item.isSold && (
+                <span className="inline-block rounded-sm bg-rust/90 px-2.5 py-1 text-[10px] md:text-xs font-medium uppercase tracking-[0.2em] text-cream shadow-md backdrop-blur-[2px]">
+                  Verkocht
+                </span>
+              )}
             </motion.div>
 
             {item.description && (
@@ -186,12 +191,27 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
               transition={{ duration: 0.6, delay: 0.42, ease: APPLE_EASE }}
               className="mt-10"
             >
-              <Link
-                href={contactHref}
-                className="inline-flex items-center rounded-lg bg-copper px-6 py-3 font-semibold text-iron-900 transition-colors hover:bg-copper-light"
-              >
-                Interesse? Neem contact op →
-              </Link>
+              {item.isSold ? (
+                <>
+                  <p className="text-sm md:text-base text-cream/70">
+                    Dit werk is verkocht — maar Gijs maakt graag een vergelijkbaar
+                    stuk op maat.
+                  </p>
+                  <Link
+                    href={contactHref}
+                    className="mt-4 inline-flex items-center rounded-lg bg-copper px-6 py-3 font-semibold text-iron-900 transition-colors hover:bg-copper-light"
+                  >
+                    Informeer naar de mogelijkheden →
+                  </Link>
+                </>
+              ) : (
+                <Link
+                  href={contactHref}
+                  className="inline-flex items-center rounded-lg bg-copper px-6 py-3 font-semibold text-iron-900 transition-colors hover:bg-copper-light"
+                >
+                  Interesse? Neem contact op →
+                </Link>
+              )}
             </motion.div>
           </div>
         </div>
