@@ -26,6 +26,8 @@ export interface PortfolioItem {
   images?: string[];
   isNew?: boolean;
   isSold?: boolean;
+  // CSS object-position voor de kaart-crop — zet het onderwerp centraal in het frame.
+  cardPosition?: string;
   // Optional making-of story, rendered on the detail page when present.
   process?: ProcessStep[];
 }
@@ -39,6 +41,7 @@ export const portfolioItems: PortfolioItem[] = [
       "De bloemblaadjes zijn gemaakt van RVS en de steel van koper. Door beide materialen bloot te stellen aan atmosferische en natuurlijke elementen zijn het diepe blauw in de bloem en de groene tinten in de steel ontstaan. Dit proces is bewust versneld, waardoor de natuur zelf onderdeel werd van het uiteindelijke werk.",
     imageSrc: "/images/portfolio/ridderspoor.jpg",
     featured: true,
+    cardPosition: "50% 30%",
     isNew: true,
     material: "Staal & koper",
     images: [
@@ -108,6 +111,7 @@ export const portfolioItems: PortfolioItem[] = [
       "Metalen tulpen gemaakt van gerecycled RVS en koper. Een boeket dat blijft. De koperen stelen zullen met de tijd groen verkleuren door oxidatie, waardoor elke bloem langzaam verandert. Handgemaakt uit hergebruikte materialen.",
     imageSrc: "/images/portfolio/tulpenboeket.jpg",
     featured: true,
+    cardPosition: "50% 14%",
     material: "Koper & RVS",
     images: [
       "/images/portfolio/tulpenboeket.jpg",
@@ -166,6 +170,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/zonnebloem.jpg",
     featured: true,
     isSold: true,
+    cardPosition: "58% 50%",
     material: "Gesmeed staal",
     images: [
       "/images/portfolio/zonnebloem.jpg",
@@ -184,6 +189,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Zwaan gemaakt van een oude Honda-motortank als lijf en een zware motorketting als sierlijke nek. Upcycling in zijn puurste vorm.",
     imageSrc: "/images/portfolio/honda-zwaan.jpg",
+    cardPosition: "50% 30%",
     featured: false,
     material: "Honda-motortank & motorketting",
     images: [
@@ -197,6 +203,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Met de hand geknipt en gevormd. Verhit en daarna verbogen tot de perfecte vorm. Cortenstaal roos op stalen voet — de roestbruine patina geeft een warme, organische uitstraling.",
     imageSrc: "/images/portfolio/roos-moederdag.jpg",
+    cardPosition: "50% 35%",
     featured: false,
     material: "Cortenstaal",
     images: [
@@ -210,6 +217,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Tijdens mijn rondreis door Nieuw-Zeeland heb ik dit kunstwerk gemaakt van gerecycled materiaal, met dank aan Burkes Pass Vintage Store. Een zwevende gieter waarbij het water wordt gesuggereerd door gelaste kettingschakels.",
     imageSrc: "/images/portfolio/gieter.jpg",
+    cardPosition: "50% 35%",
     featured: false,
     material: "Staal & ketting",
     images: [
@@ -238,6 +246,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Elegante zwart gesmede roos met steel en bladeren. Tijdloos cadeau, hier gefotografeerd tussen verse bloemen op een feesttafel.",
     imageSrc: "/images/portfolio/roos-zwart.jpg",
+    cardPosition: "82% 42%",
     featured: false,
     material: "Zwart gesmeed staal",
     images: [
@@ -295,6 +304,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Een industriële ladder die praktisch is en er ook nog eens goed uitziet als aankleding voor je huis. Volledig van zwart staal met bijpassende wandplanken en houten accenten.",
     imageSrc: "/images/portfolio/trap-wandplanken.jpg",
+    cardPosition: "50% 35%",
     featured: false,
     material: "Zwart staal & hout",
     images: [
@@ -310,6 +320,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Een sierlijk wijnrek, op maat gemaakt om precies tussen de muren te passen. Geschikt voor zowel smalle als brede flessen, met gegolfde stalen houders in een houten frame.",
     imageSrc: "/images/portfolio/wijnrek.jpg",
+    cardPosition: "50% 25%",
     featured: false,
     material: "Staal & hout",
     images: [
@@ -337,6 +348,7 @@ export const portfolioItems: PortfolioItem[] = [
     description:
       "Moderne barkrukken met Z-vormig stalen onderstel, afgewerkt met gebrande houten zittingen. Industrieel design dat in elk interieur past.",
     imageSrc: "/images/portfolio/barkrukken.jpg",
+    cardPosition: "50% 40%",
     featured: false,
     material: "Staal & gebrand hout",
     images: [

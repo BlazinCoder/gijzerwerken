@@ -91,6 +91,7 @@ export default function PortfolioCard({
           alt={item.title}
           loading="lazy"
           className={`h-full w-full object-cover ${imageHoverClasses}`}
+          style={item.cardPosition ? { objectPosition: item.cardPosition } : undefined}
           onError={() => setImgError(true)}
         />
       )}
