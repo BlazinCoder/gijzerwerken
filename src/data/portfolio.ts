@@ -7,6 +7,11 @@ export const CATEGORY_LABELS: Record<Category, string> = {
   maatwerk: "Maatwerk",
 };
 
+export type ProcessStep = {
+  caption: string; // bijschrift onder de foto('s)
+  images: string[]; // 1 t/m 2 paden, bv "/images/proces/tulp/tulp-01.jpg"
+};
+
 export interface PortfolioItem {
   id: string;
   title: string;
@@ -19,6 +24,8 @@ export interface PortfolioItem {
   // Optional gallery — when present, images[0] must equal imageSrc.
   images?: string[];
   isNew?: boolean;
+  // Optional making-of story, rendered on the detail page when present.
+  process?: ProcessStep[];
 }
 
 export const portfolioItems: PortfolioItem[] = [
@@ -53,6 +60,47 @@ export const portfolioItems: PortfolioItem[] = [
       "/images/portfolio/tulpenboeket-2.jpg",
       "/images/portfolio/tulpenboeket-3.jpg",
       "/images/portfolio/tulpenboeket-4.jpg",
+    ],
+    process: [
+      {
+        caption: "Het begint met ruw plaatstaal en koper.",
+        images: ["/images/proces/tulp/tulp-01.jpg"],
+      },
+      {
+        caption: "Elk blad wordt met de hand afgetekend en uit het staal gesneden.",
+        images: ["/images/proces/tulp/tulp-02.jpg"],
+      },
+      {
+        caption:
+          "Stuk voor stuk worden de blaadjes uit de plaat bevrijd en in vorm gehamerd.",
+        images: ["/images/proces/tulp/tulp-03.jpg", "/images/proces/tulp/tulp-04.jpg"],
+      },
+      {
+        caption:
+          "De koperen stelen worden op maat gemaakt, ingesneden en met de hand gebogen.",
+        images: ["/images/proces/tulp/tulp-05.jpg", "/images/proces/tulp/tulp-06.jpg"],
+      },
+      {
+        caption: "Uit koper groeien de bladeren.",
+        images: ["/images/proces/tulp/tulp-07.jpg"],
+      },
+      {
+        caption: "De blaadjes worden rond het hart gelast tot één bloem.",
+        images: ["/images/proces/tulp/tulp-08.jpg"],
+      },
+      {
+        caption: "De eerste tulp staat, en bloem voor bloem groeit het boeket.",
+        images: ["/images/proces/tulp/tulp-09.jpg", "/images/proces/tulp/tulp-10.jpg"],
+      },
+      {
+        caption:
+          "Tot slot wordt elk oppervlak met de borstel opgeschuurd tot het zacht oplicht.",
+        images: ["/images/proces/tulp/tulp-11.jpg"],
+      },
+      {
+        caption: "Het eindresultaat: een boeket dat nooit verwelkt.",
+        images: ["/images/proces/tulp/tulp-12.jpg"],
+      },
     ],
   },
   {

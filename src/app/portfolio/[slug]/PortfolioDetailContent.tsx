@@ -10,6 +10,7 @@ import {
 } from "@/data/portfolio";
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import SectionHeader from "@/components/ui/SectionHeader";
+import MaakProces from "@/components/sections/MaakProces";
 
 const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -194,6 +195,13 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
             </motion.div>
           </div>
         </div>
+
+        {/* Maakproces */}
+        {item.process && item.process.length > 0 && (
+          <div className="mt-24 md:mt-32">
+            <MaakProces steps={item.process} />
+          </div>
+        )}
 
         {/* Meer werk */}
         {related.length > 0 && (
