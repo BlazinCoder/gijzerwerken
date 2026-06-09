@@ -29,6 +29,18 @@ type GridConfig = { classes: string; isLarge: boolean };
 
 function getGridConfig(item: PortfolioItem, index: number): GridConfig {
   if (item.category === "bloemen" && item.featured) {
+    if (item.gridCell === "wide") {
+      return {
+        classes: "col-span-2 md:col-span-2",
+        isLarge: true,
+      };
+    }
+    if (item.gridCell === "tall") {
+      return {
+        classes: "md:row-span-2",
+        isLarge: true,
+      };
+    }
     if (index === 0) {
       return {
         classes: "col-span-2 md:col-span-2 md:row-span-2",

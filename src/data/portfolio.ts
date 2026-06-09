@@ -28,6 +28,8 @@ export interface PortfolioItem {
   isSold?: boolean;
   // CSS object-position voor de kaart-crop — zet het onderwerp centraal in het frame.
   cardPosition?: string;
+  // Celvorm-override in de bento-grid — match de foto-oriëntatie (liggend=wide, staand=tall).
+  gridCell?: "wide" | "tall";
   // Optional making-of story, rendered on the detail page when present.
   process?: ProcessStep[];
 }
@@ -111,7 +113,8 @@ export const portfolioItems: PortfolioItem[] = [
       "Metalen tulpen gemaakt van gerecycled RVS en koper. Een boeket dat blijft. De koperen stelen zullen met de tijd groen verkleuren door oxidatie, waardoor elke bloem langzaam verandert. Handgemaakt uit hergebruikte materialen.",
     imageSrc: "/images/portfolio/tulpenboeket.jpg",
     featured: true,
-    cardPosition: "50% 14%",
+    gridCell: "tall",
+    cardPosition: "50% 25%",
     material: "Koper & RVS",
     images: [
       "/images/portfolio/tulpenboeket.jpg",
@@ -170,7 +173,8 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/zonnebloem.jpg",
     featured: true,
     isSold: true,
-    cardPosition: "58% 50%",
+    gridCell: "wide",
+    cardPosition: "58% 42%",
     material: "Gesmeed staal",
     images: [
       "/images/portfolio/zonnebloem.jpg",
