@@ -14,6 +14,11 @@ interface MaakProcesProps {
   steps: ProcessStep[];
 }
 
+// Per-foto crop-focus voor gepaarde (aspect-[3/4]) foto's; default is center.
+const OBJECT_POSITION: Record<string, string> = {
+  "/images/proces/tulp/tulp-04.jpg": "70% center",
+};
+
 function ProcesFoto({
   src,
   alt,
@@ -35,6 +40,11 @@ function ProcesFoto({
           loading="lazy"
           className={
             paired ? "aspect-[3/4] w-full object-cover" : "h-auto w-full"
+          }
+          style={
+            OBJECT_POSITION[src]
+              ? { objectPosition: OBJECT_POSITION[src] }
+              : undefined
           }
           onError={() => setImgError(true)}
         />
