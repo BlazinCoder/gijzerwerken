@@ -1,8 +1,9 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   motion,
+  useInView,
   useReducedMotion,
   useScroll,
   useTransform,
@@ -59,6 +60,60 @@ function ProcesFoto({
   );
 }
 
+function ProcesVideo({
+  video,
+  caption,
+  reduced,
+}: {
+  video: { src: string; poster: string };
+  caption: string;
+  reduced: boolean;
+}) {
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const [videoError, setVideoError] = useState(false);
+  const inView = useInView(videoRef, { amount: 0.4 });
+
+  useEffect(() => {
+    if (reduced) return; // geen autoplay — gebruiker speelt zelf af via controls
+    const v = videoRef.current;
+    if (!v) return;
+    // Expliciet via property — React laat het attribuut soms vallen; nodig voor iOS-autoplay.
+    v.muted = true;
+    if (inView) {
+      v.play().catch(() => {}); // autoplay-block stil afvangen
+    } else {
+      v.pause();
+    }
+  }, [inView, reduced]);
+
+  if (videoError) {
+    return <ProcesFoto src={video.poster} alt={caption} paired={false} />;
+  }
+
+  return (
+    <div className="relative overflow-hidden rounded-lg">
+      <video
+        ref={videoRef}
+        src={video.src}
+        poster={video.poster}
+        muted
+        loop
+        playsInline
+        preload={reduced ? "metadata" : "none"}
+        controls={reduced || undefined}
+        className="h-auto w-full"
+        onError={() => setVideoError(true)}
+      />
+      {/* Randen lossen op in de iron-900 achtergrond — inset shadow, geen mask (Safari) */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0"
+        style={{ boxShadow: "inset 0 0 55px 20px #0a0a0a" }}
+      />
+    </div>
+  );
+}
+
 function MaakProcesStap({
   step,
   index,
@@ -76,7 +131,7 @@ function MaakProcesStap({
   const opacity = useTransform(scrollYProgress, [0, 1], [0, 1]);
   const y = useTransform(scrollYProgress, [0, 1], [40, 0]);
 
-  const paired = step.images.length > 1;
+  const paired = (step.images?.length ?? 0) > 1;
 
   return (
     <motion.div ref={ref} style={reduced ? undefined : { opacity, y }}>
@@ -87,16 +142,24 @@ function MaakProcesStap({
             : "mx-auto max-w-xl"
         }
       >
-        {step.images.map((src, i) => (
-          <ProcesFoto
-            key={src}
-            src={src}
-            alt={
-              paired ? `${step.caption} — foto ${i + 1}` : step.caption
-            }
-            paired={paired}
+        {step.video ? (
+          <ProcesVideo
+            video={step.video}
+            caption={step.caption}
+            reduced={reduced}
           />
-        ))}
+        ) : (
+          step.images?.map((src, i) => (
+            <ProcesFoto
+              key={src}
+              src={src}
+              alt={
+                paired ? `${step.caption} — foto ${i + 1}` : step.caption
+              }
+              paired={paired}
+            />
+          ))
+        )}
       </div>
       <div className="mt-6 text-center">
         <span className="font-playfair text-sm tracking-[0.3em] text-copper">
@@ -139,7 +202,7 @@ export default function MaakProces({ steps }: MaakProcesProps) {
         <div className="relative space-y-32 md:space-y-48">
           {steps.map((step, i) => (
             <MaakProcesStap
-              key={step.images[0]}
+              key={step.video?.src ?? step.images?.[0] ?? i}
               step={step}
               index={i}
               reduced={!!reduced}

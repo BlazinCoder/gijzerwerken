@@ -8,8 +8,9 @@ export const CATEGORY_LABELS: Record<Category, string> = {
 };
 
 export type ProcessStep = {
-  caption: string; // bijschrift onder de foto('s)
-  images: string[]; // 1 t/m 2 paden, bv "/images/proces/tulp/tulp-01.jpg"
+  caption: string; // bijschrift onder de foto('s) of video
+  images?: string[]; // 1 t/m 2 paden, bv "/images/proces/tulp/tulp-01.jpg"
+  video?: { src: string; poster: string }; // óf een video (muted loop, "levende foto")
 };
 
 export interface PortfolioItem {
@@ -44,6 +45,58 @@ export const portfolioItems: PortfolioItem[] = [
       "/images/portfolio/ridderspoor-2.jpg",
       "/images/portfolio/ridderspoor-3.jpg",
       "/images/portfolio/ridderspoor-4.jpg",
+    ],
+    process: [
+      {
+        caption:
+          "Uit RVS-plaat worden schijfjes gesneden, elk ingeknipt tot bloemblaadjes.",
+        images: ["/images/proces/ridderspoor/ridderspoor-01.jpg"],
+      },
+      {
+        caption:
+          "Met de plaatschaar wordt elk schijfje blaadje voor blaadje gevormd.",
+        images: ["/images/proces/ridderspoor/ridderspoor-02.jpg"],
+      },
+      {
+        caption: "Tientallen bloempjes, stuk voor stuk met de hand gevouwen.",
+        images: ["/images/proces/ridderspoor/ridderspoor-03.jpg"],
+      },
+      {
+        caption:
+          "Dan krijgt het staal zijn kleur: door het te verhitten wordt de oxidatie versneld en ontstaat het diepe blauw.",
+        video: {
+          src: "/videos/proces/ridderspoor/ridderspoor-vid-01.mp4",
+          poster: "/images/proces/ridderspoor/ridderspoor-vid-01-poster.jpg",
+        },
+      },
+      {
+        caption: "De eerste bloempjes vinden hun plek op de steel.",
+        images: ["/images/proces/ridderspoor/ridderspoor-04.jpg"],
+      },
+      {
+        caption: "Bloem voor bloem groeit de tros tot één volle ridderspoor.",
+        images: ["/images/proces/ridderspoor/ridderspoor-05.jpg"],
+      },
+      {
+        caption:
+          "De bladeren worden uit koper getekend, gesneden en van nerven voorzien.",
+        images: [
+          "/images/proces/ridderspoor/ridderspoor-06.jpg",
+          "/images/proces/ridderspoor/ridderspoor-07.jpg",
+        ],
+      },
+      {
+        caption: "Alles komt samen — het koper nog blank.",
+        images: ["/images/proces/ridderspoor/ridderspoor-08.jpg"],
+      },
+      {
+        caption:
+          "Tot weer en wind hun werk doen: het koper kleurt langzaam groen, het staal houdt zijn diepe blauw. Een bloem die alleen maar mooier wordt.",
+        video: {
+          src: "/videos/proces/ridderspoor/ridderspoor-vid-02.mp4",
+          poster: "/images/proces/ridderspoor/ridderspoor-vid-02-poster.jpg",
+        },
+      },
     ],
   },
   {
