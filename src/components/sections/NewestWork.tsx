@@ -79,7 +79,7 @@ export default function NewestWork() {
           {...slideLeft}
           type="button"
           onClick={() => openLightbox(0)}
-          className="group block w-full bg-iron-800 rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-copper"
+          className="group relative block w-full bg-iron-800 rounded-lg overflow-hidden focus:outline-none focus:ring-2 focus:ring-copper"
           aria-label={`Open ${newestItem.title} in lightbox`}
         >
           <img
@@ -88,6 +88,12 @@ export default function NewestWork() {
             loading="lazy"
             className="w-full max-h-[500px] object-cover rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.02]"
           />
+          {/* Verkocht-chip — zelfde stijl als PortfolioCard */}
+          {newestItem.isSold && (
+            <span className="pointer-events-none absolute top-3 left-3 z-10 rounded-sm bg-rust/90 px-2.5 py-1 text-[10px] md:text-xs font-medium uppercase tracking-[0.2em] text-cream shadow-md backdrop-blur-[2px]">
+              Verkocht
+            </span>
+          )}
         </motion.button>
 
         <motion.div {...slideRight} className="flex flex-col">

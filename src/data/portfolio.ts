@@ -36,6 +36,58 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
   {
+    id: "klaproos",
+    title: "Klaproos",
+    category: "bloemen",
+    description:
+      "Een klaproos van RVS, geheel met de hand gevormd: dunne metalen blaadjes die vallen alsof ze van papier zijn, rond een donker hart. Gemaakt om buiten tussen de echte bloemen te staan — roestvast, dus hij blijft. Een klaproos die nooit uitbloeit.",
+    imageSrc: "/images/portfolio/klaproos.jpg",
+    featured: true,
+    isNew: true,
+    isSold: true,
+    material: "RVS",
+    images: [
+      "/images/portfolio/klaproos.jpg",
+      "/images/portfolio/klaproos-2.jpg",
+      "/images/portfolio/klaproos-3.jpg",
+    ],
+    process: [
+      {
+        caption:
+          "De bloemkop ligt klaar: dunne blaadjes van RVS rond een donker hart.",
+        images: ["/images/proces/klaproos/klaproos-01.jpg"],
+      },
+      {
+        caption:
+          "Elk blad met de hand gebogen, tot het valt zoals bij een echte klaproos.",
+        video: {
+          src: "/videos/proces/klaproos/klaproos-vid-01.mp4",
+          poster: "/images/proces/klaproos/klaproos-vid-01-poster.jpg",
+        },
+      },
+      {
+        caption: "Dan, in een regen van vonken, vindt de steel zijn bloem.",
+        video: {
+          src: "/videos/proces/klaproos/klaproos-vid-02.mp4",
+          poster: "/images/proces/klaproos/klaproos-vid-02-poster.jpg",
+        },
+      },
+      {
+        caption:
+          "De klaproos is compleet: de slanke steel draagt de kop, de voet houdt hem overeind.",
+        video: {
+          src: "/videos/proces/klaproos/klaproos-vid-03.mp4",
+          poster: "/images/proces/klaproos/klaproos-vid-03-poster.jpg",
+        },
+      },
+      {
+        caption:
+          "Zijn plek is buiten, tussen het groen — een klaproos die elk seizoen doorstaat.",
+        images: ["/images/proces/klaproos/klaproos-02.jpg"],
+      },
+    ],
+  },
+  {
     id: "ridderspoor",
     title: "Ridderspoor",
     category: "bloemen",
@@ -43,8 +95,8 @@ export const portfolioItems: PortfolioItem[] = [
       "De bloemblaadjes zijn gemaakt van RVS en de steel van koper. Door beide materialen bloot te stellen aan atmosferische en natuurlijke elementen zijn het diepe blauw in de bloem en de groene tinten in de steel ontstaan. Dit proces is bewust versneld, waardoor de natuur zelf onderdeel werd van het uiteindelijke werk.",
     imageSrc: "/images/portfolio/ridderspoor.jpg",
     featured: true,
+    gridCell: "tall",
     cardPosition: "50% 30%",
-    isNew: true,
     material: "Staal & koper",
     images: [
       "/images/portfolio/ridderspoor.jpg",
