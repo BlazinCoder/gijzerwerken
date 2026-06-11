@@ -36,6 +36,55 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
   {
+    id: "anthurium",
+    title: "Anthurium",
+    category: "bloemen",
+    description:
+      "De anthurium is een tropische bloem uit de warme regenwouden van Midden- en Zuid-Amerika. Deze is gemaakt van oude metalen: het schutblad gedreven uit het koper van een oude boiler, de steel en kolf uit oud staal, de voet uit het messing van een drumbekken. Waar de vlam het koper raakte, bleef een regenboog achter. Oude materialen, nieuw leven — een bloem die altijd bloeit.",
+    imageSrc: "/images/portfolio/anthurium.jpg",
+    featured: true,
+    isNew: true,
+    material: "Koper, staal & messing",
+    images: [
+      "/images/portfolio/anthurium.jpg",
+      "/images/portfolio/anthurium-2.jpg",
+      "/images/portfolio/anthurium-3.jpg",
+    ],
+    process: [
+      {
+        caption:
+          "Uit het koper van een oude boiler wordt het schutblad gedreven — slag voor slag.",
+        video: {
+          src: "/videos/proces/anthurium/anthurium-vid-01.mp4",
+          poster: "/images/proces/anthurium/anthurium-vid-01-poster.jpg",
+        },
+      },
+      {
+        caption:
+          "Met hamer en hand krijgt het blad zijn nerven, golven en glans.",
+        video: {
+          src: "/videos/proces/anthurium/anthurium-vid-02.mp4",
+          poster: "/images/proces/anthurium/anthurium-vid-02-poster.jpg",
+        },
+      },
+      {
+        caption:
+          "De kolf wordt opgebouwd uit honderden lasparels — druppel voor druppel gesmolten.",
+        images: ["/images/proces/anthurium/anthurium-01.jpg"],
+      },
+      {
+        caption:
+          "Schutblad en steel vinden elkaar — de steel gedraaid uit hergebruikt betonijzer.",
+        images: ["/images/proces/anthurium/anthurium-02.jpg"],
+      },
+      {
+        caption:
+          "Compleet, gesigneerd op de voet van messing — ooit een drumbekken. Een anthurium die altijd bloeit.",
+        images: ["/images/portfolio/anthurium-3.jpg"],
+      },
+    ],
+  },
+  {
     id: "klaproos",
     title: "Klaproos",
     category: "bloemen",
@@ -43,8 +92,8 @@ export const portfolioItems: PortfolioItem[] = [
       "Een klaproos van RVS, geheel met de hand gevormd: dunne metalen blaadjes die vallen alsof ze van papier zijn, rond een donker hart. Gemaakt om buiten tussen de echte bloemen te staan — roestvast, dus hij blijft. Een klaproos die nooit uitbloeit.",
     imageSrc: "/images/portfolio/klaproos.jpg",
     featured: true,
-    isNew: true,
     isSold: true,
+    cardPosition: "35% 50%",
     material: "RVS",
     images: [
       "/images/portfolio/klaproos.jpg",
