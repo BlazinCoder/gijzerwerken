@@ -47,10 +47,9 @@ export const portfolioItems: PortfolioItem[] = [
     material: "Koper",
     images: [
       "/images/portfolio/musa-basjoo/musa-basjoo.jpg",
-      "/images/portfolio/musa-basjoo/musa-basjoo-bovenaanzicht.jpg",
-      "/images/portfolio/musa-basjoo/musa-basjoo-bladkroon.jpg",
-      "/images/portfolio/musa-basjoo/musa-basjoo-blad.jpg",
       "/images/portfolio/musa-basjoo/musa-basjoo-volledig.jpg",
+      "/images/portfolio/musa-basjoo/musa-basjoo-bovenaanzicht.jpg",
+      "/images/portfolio/musa-basjoo/musa-basjoo-blad.jpg",
     ],
   },
   {
