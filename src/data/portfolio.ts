@@ -36,6 +36,24 @@ export interface PortfolioItem {
 
 export const portfolioItems: PortfolioItem[] = [
   {
+    id: "musa-basjoo",
+    title: "Musa Basjoo",
+    category: "bloemen",
+    description:
+      "Musa basjoo, één leven, volledig gegeven, dan doorgegeven. Elk koperen blad is met de hand gemaakt, en geen twee zijn hetzelfde in maat of vorm. Net als echte bladeren. Samen vormen ze een plant van bijna twee meter hoog. Deze plant heeft geen stam. Hij is gemaakt van opgerolde bladeren die vanuit het midden omhoog openen, laag na laag. Nieuwe bladeren groeien, oude verwelken en sterven af, en dan begint het allemaal opnieuw.",
+    imageSrc: "/images/portfolio/musa-basjoo/musa-basjoo.jpg",
+    featured: true,
+    isNew: true,
+    material: "Koper",
+    images: [
+      "/images/portfolio/musa-basjoo/musa-basjoo.jpg",
+      "/images/portfolio/musa-basjoo/musa-basjoo-bovenaanzicht.jpg",
+      "/images/portfolio/musa-basjoo/musa-basjoo-bladkroon.jpg",
+      "/images/portfolio/musa-basjoo/musa-basjoo-blad.jpg",
+      "/images/portfolio/musa-basjoo/musa-basjoo-volledig.jpg",
+    ],
+  },
+  {
     id: "anthurium",
     title: "Anthurium",
     category: "bloemen",
@@ -43,7 +61,6 @@ export const portfolioItems: PortfolioItem[] = [
       "De anthurium is een tropische bloem uit de warme regenwouden van Midden- en Zuid-Amerika. Deze is gemaakt van oude metalen: het schutblad gedreven uit het koper van een oude boiler, de steel en kolf uit oud staal, de voet uit het messing van een drumbekken. Waar de vlam het koper raakte, bleef een regenboog achter. Oude materialen, nieuw leven — een bloem die altijd bloeit.",
     imageSrc: "/images/portfolio/anthurium.jpg",
     featured: true,
-    isNew: true,
     material: "Koper, staal & messing",
     images: [
       "/images/portfolio/anthurium.jpg",
