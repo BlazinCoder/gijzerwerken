@@ -53,22 +53,10 @@ body::before {
   background-size: 300px 300px;
 }
 
-/* iOS safe area cover — voorkomt content-bleed boven navbar (notch/Dynamic Island).
-   body::before is al de noise-overlay (z-9999), dus dit staat op ::after. */
-body::after {
-  content: "";
-  display: block;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: env(safe-area-inset-top, 0px);
-  background-color: var(--color-iron-900); /* #0a0a0a */
-  z-index: 9998; /* boven content + navbar (z-50), onder noise-overlay (z-9999) */
-  pointer-events: none;
-}
-
-/* Navbar houdt rekening met de safe area — betrouwbaarder dan Tailwind pt-[env(...)] op Safari */
+/* Navbar houdt rekening met de safe area — betrouwbaarder dan Tailwind pt-[env(...)] op Safari.
+   De safe-area zone zelf wordt afgedekt door een opaque element ín de <nav> (zie Navbar.tsx),
+   niet via body::after: Framer Motion page-transitions maken een eigen stacking context waardoor
+   scrollende content bóven een body-pseudo-element tekent, ongeacht z-index. */
 .navbar-safe-area {
   padding-top: env(safe-area-inset-top, 0px);
 }

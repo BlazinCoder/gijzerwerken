@@ -47,6 +47,16 @@ export default function Navbar() {
       <nav
         className="navbar-safe-area fixed top-0 left-0 right-0 z-50 bg-iron-900 border-b border-iron-700/50"
       >
+        {/* Safe area cover — altijd opaque, dekt de notch/Dynamic-Island-zone af.
+            Zit ín de <nav> (zelfde stacking context als z-50) → geen z-index-oorlog met
+            Framer Motion page-transitions. Absolute → volgt de fixed navbar. Geen transitie:
+            moet altijd instant #0a0a0a zijn. */}
+        <div
+          className="absolute top-0 left-0 right-0 bg-iron-900"
+          style={{ height: "env(safe-area-inset-top, 0px)" }}
+          aria-hidden="true"
+        />
+
         <div className="max-w-7xl mx-auto px-6 py-3 sm:py-5 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="block">
