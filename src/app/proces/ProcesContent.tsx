@@ -134,7 +134,7 @@ export default function ProcesContent() {
   return (
     <div className="relative min-h-screen">
       {/* Header */}
-      <section className="pt-[calc(env(safe-area-inset-top)+8rem)] pb-12 px-6">
+      <section className="pt-32 pb-12 px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}

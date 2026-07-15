@@ -68,7 +68,7 @@ export default function ContactPage() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="min-h-screen pt-[calc(env(safe-area-inset-top)+7rem)] pb-16 px-6">
+      <div className="min-h-screen pt-28 pb-16 px-6">
         <div className="max-w-6xl mx-auto">
           <div className="text-center">
             <h1 className="font-playfair text-3xl md:text-5xl text-cream">

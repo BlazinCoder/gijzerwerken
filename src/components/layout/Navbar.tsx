@@ -45,18 +45,8 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="navbar-safe-area navbar-gpu-layer fixed top-0 left-0 right-0 z-50 bg-iron-900 border-b border-iron-700/50"
+        className="fixed top-0 left-0 right-0 z-50 bg-iron-900 border-b border-iron-700/50"
       >
-        {/* Safe area cover — altijd opaque, dekt de notch/Dynamic-Island-zone af.
-            Zit ín de <nav> (zelfde stacking context als z-50) → geen z-index-oorlog met
-            Framer Motion page-transitions. Absolute → volgt de fixed navbar. Geen transitie:
-            moet altijd instant #0a0a0a zijn. */}
-        <div
-          className="absolute top-0 left-0 right-0 bg-iron-900"
-          style={{ height: "env(safe-area-inset-top, 0px)" }}
-          aria-hidden="true"
-        />
-
         <div className="max-w-7xl mx-auto px-6 py-3 sm:py-5 flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="block">
@@ -138,13 +128,13 @@ export default function Navbar() {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3, ease: APPLE_EASE }}
             style={{ backgroundColor: "#0a0a0a" }}
-            className="md:hidden fixed inset-0 z-50 flex flex-col items-center justify-center gap-2 pt-[env(safe-area-inset-top)] pb-[env(safe-area-inset-bottom)]"
+            className="md:hidden fixed inset-0 z-50 flex flex-col items-center justify-center gap-2"
           >
             {/* Close button */}
             <button
               onClick={() => setMenuOpen(false)}
               aria-label="Menu sluiten"
-              className="absolute top-[calc(env(safe-area-inset-top)+1.5rem)] right-6 w-11 h-11 flex items-center justify-center text-cream text-3xl leading-none"
+              className="absolute top-6 right-6 w-11 h-11 flex items-center justify-center text-cream text-3xl leading-none"
             >
               ×
             </button>

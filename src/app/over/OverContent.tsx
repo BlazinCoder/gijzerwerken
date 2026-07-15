@@ -24,7 +24,7 @@ export default function OverContent() {
   return (
     <div className="min-h-screen">
       {/* Hero */}
-      <section className="pt-[calc(env(safe-area-inset-top)+8rem)] pb-20 px-6">
+      <section className="pt-32 pb-20 px-6">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
           <div className="overflow-hidden rounded-lg aspect-[3/4]">
             <img
