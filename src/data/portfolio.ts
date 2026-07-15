@@ -312,6 +312,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/honda-zwaan.jpg",
     cardPosition: "50% 30%",
     featured: false,
+    isSold: true,
     material: "Honda-motortank & motorketting",
     images: [
       "/images/portfolio/honda-zwaan.jpg",
@@ -326,6 +327,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/roos-moederdag.jpg",
     cardPosition: "50% 35%",
     featured: false,
+    isSold: true,
     material: "Cortenstaal",
     images: [
       "/images/portfolio/roos-moederdag.jpg",
@@ -340,6 +342,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/gieter.jpg",
     cardPosition: "50% 35%",
     featured: false,
+    isSold: true,
     material: "Staal & ketting",
     images: [
       "/images/portfolio/gieter.jpg",
@@ -353,6 +356,7 @@ export const portfolioItems: PortfolioItem[] = [
       "Deze waratah is veel te vinden in de growers-gebieden van Tasmanië. De bloem staat voor de wildernis van het eiland. Volledig van gelast staal, met felrode krullen en groene kelkbladeren.",
     imageSrc: "/images/portfolio/waratah.jpg",
     featured: false,
+    isSold: true,
     material: "Gelast staal, gepoedercoat",
     images: [
       "/images/portfolio/waratah.jpg",
@@ -382,6 +386,7 @@ export const portfolioItems: PortfolioItem[] = [
       "Een multifunctionele tafel gemaakt voor 4 tot 10 personen. Stalen frame en gebrand houten bladen, om het een robuuste look te geven.",
     imageSrc: "/images/portfolio/eettafel.jpg",
     featured: false,
+    isSold: true,
     material: "Staal & gebrand hout",
     images: [
       "/images/portfolio/eettafel.jpg",
@@ -396,6 +401,7 @@ export const portfolioItems: PortfolioItem[] = [
       "Een zelf ontworpen deur met staal, hout en glas — super uniek. Geometrische indeling combineert transparantie met warmte.",
     imageSrc: "/images/portfolio/deur.jpg",
     featured: false,
+    isSold: true,
     material: "Staal, glas & massief hout",
     images: [
       "/images/portfolio/deur.jpg",
@@ -410,6 +416,7 @@ export const portfolioItems: PortfolioItem[] = [
       "Aanpassingen aan oudere meubels om het zitten meer comfort te geven. Barkruk-set van massieve boomstammen, voorzien van handgesmede stalen voetsteunen.",
     imageSrc: "/images/portfolio/bartafel.jpg",
     featured: false,
+    isSold: true,
     material: "Massieve boomstam & staal",
     images: [
       "/images/portfolio/bartafel.jpg",
@@ -427,6 +434,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/trap-wandplanken.jpg",
     cardPosition: "50% 35%",
     featured: false,
+    isSold: true,
     material: "Zwart staal & hout",
     images: [
       "/images/portfolio/trap-wandplanken.jpg",
@@ -443,6 +451,7 @@ export const portfolioItems: PortfolioItem[] = [
     imageSrc: "/images/portfolio/wijnrek.jpg",
     cardPosition: "50% 25%",
     featured: false,
+    isSold: true,
     material: "Staal & hout",
     images: [
       "/images/portfolio/wijnrek.jpg",
@@ -484,6 +493,7 @@ export const portfolioItems: PortfolioItem[] = [
       "Deze schoorsteen heb ik in mijn eigen dorp Kethel mogen plaatsen — een van de mooiste daken van het dorp. Op maat gemaakte schoorsteenkap van staal met een Shamrock als bekroning.",
     imageSrc: "/images/portfolio/schoorsteenkap.jpg",
     featured: false,
+    isSold: true,
     material: "Staal & gesmeed staal",
     images: [
       "/images/portfolio/schoorsteenkap.jpg",
