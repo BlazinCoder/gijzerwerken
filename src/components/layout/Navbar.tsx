@@ -45,7 +45,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="fixed top-0 left-0 right-0 z-50 pt-[env(safe-area-inset-top)] bg-iron-900 border-b border-iron-700/50"
+        className="navbar-safe-area fixed top-0 left-0 right-0 z-50 bg-iron-900 border-b border-iron-700/50"
       >
         <div className="max-w-7xl mx-auto px-6 py-3 sm:py-5 flex items-center justify-between">
           {/* Logo */}
