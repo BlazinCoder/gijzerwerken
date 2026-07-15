@@ -54,11 +54,26 @@ body::before {
 }
 
 /* Navbar houdt rekening met de safe area — betrouwbaarder dan Tailwind pt-[env(...)] op Safari.
-   De safe-area zone zelf wordt afgedekt door een opaque element ín de <nav> (zie Navbar.tsx),
-   niet via body::after: Framer Motion page-transitions maken een eigen stacking context waardoor
-   scrollende content bóven een body-pseudo-element tekent, ongeacht z-index. */
+   De safe-area zone zelf wordt afgedekt door een opaque element ín de <nav> (zie Navbar.tsx). */
 .navbar-safe-area {
   padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* iOS-Safari compositing-fix voor de fixed navbar.
+   ROOT CAUSE: Framer Motion page-transitions (PageTransition.tsx) zetten will-change/transform op
+   de scrollende content → WebKit promoot die content naar een eigen GPU-compositielaag. Een bekende
+   WebKit-bug tekent zo'n composietlaag BÓVEN een `position: fixed` sibling, ongeacht z-index. Daardoor
+   schemert content over de navbar op device (niet op desktop, niet zichtbaar in de code). z-index-fixes
+   (body::after v1, cover-div-in-nav v2) verliezen dit gevecht altijd.
+   FIX: promoot de navbar ZELF naar een eigen compositielaag (translateZ(0) + will-change: transform).
+   Tussen twee composietlagen respecteert WebKit z-index wél → navbar (z-50) wint van content (z-1). */
+.navbar-gpu-layer {
+  transform: translateZ(0);
+  -webkit-transform: translateZ(0);
+  will-change: transform;
+  /* backface-hidden dwingt de laag-promotie af op oudere iOS-WebKit als extra zekerheid */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
 }
 
 /* Scrollbar styling */

@@ -45,7 +45,7 @@ export default function Navbar() {
   return (
     <>
       <nav
-        className="navbar-safe-area fixed top-0 left-0 right-0 z-50 bg-iron-900 border-b border-iron-700/50"
+        className="navbar-safe-area navbar-gpu-layer fixed top-0 left-0 right-0 z-50 bg-iron-900 border-b border-iron-700/50"
       >
         {/* Safe area cover — altijd opaque, dekt de notch/Dynamic-Island-zone af.
             Zit ín de <nav> (zelfde stacking context als z-50) → geen z-index-oorlog met
