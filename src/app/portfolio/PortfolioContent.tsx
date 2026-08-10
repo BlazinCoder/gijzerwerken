@@ -59,6 +59,13 @@ function getGridConfig(item: PortfolioItem, index: number): GridConfig {
     };
   }
 
+  if (item.gridSize === "tall") {
+    return {
+      classes: "md:row-span-2",
+      isLarge: true,
+    };
+  }
+
   if (item.category === "bloemen") {
     return {
       classes: "md:row-span-2",
