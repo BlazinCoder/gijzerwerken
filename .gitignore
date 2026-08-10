@@ -37,7 +37,6 @@ yarn-error.log*
 # project-internal
 /promo/
 memory.md
-CLAUDE.md
 
 # typescript
 *.tsbuildinfo
