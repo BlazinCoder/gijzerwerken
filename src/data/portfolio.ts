@@ -304,6 +304,51 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
   {
+    id: "paua",
+    title: "Paua",
+    category: "sculpturen",
+    description:
+      "In Nieuw-Zeeland zag ik voor het eerst een paua, de schelp die ook wel bekendstaat als abalone. Voor de Māori is deze schelp al eeuwenlang een gewaardeerd materiaal, verwerkt in hun kunst en houtsnijwerk. Ze gebruiken het materiaal van de schelp voor de ogen van gesneden figuren — een detail dat teruggaat tot hun oorsprong. De vorm en de kleuren maakten direct indruk. De paua wordt gevormd door de natuur zelf, laag op laag.",
+    imageSrc: "/images/portfolio/paua.jpg",
+    featured: false,
+    cardPosition: "50% 35%",
+    dimensions: "150 × 120 cm",
+    material: "RVS",
+    images: [
+      "/images/portfolio/paua.jpg",
+      "/images/portfolio/paua-2.jpg",
+      "/images/portfolio/paua-3.jpg",
+      "/images/portfolio/paua-4.jpg",
+      "/images/portfolio/paua-5.jpg",
+    ],
+    process: [
+      {
+        caption:
+          "De inspiratie: een echte paua uit Nieuw-Zeeland, gevormd door de natuur, laag op laag.",
+        images: ["/images/proces/paua/stap-1.jpg"],
+      },
+      {
+        caption:
+          "Losse banden RVS, gebogen en geschikt tot de contour van de schelp.",
+        images: ["/images/proces/paua/stap-2.jpg"],
+      },
+      {
+        caption: "Paneel voor paneel aan elkaar gehecht, las voor las.",
+        images: ["/images/proces/paua/stap-3.jpg"],
+      },
+      {
+        caption:
+          "De geribde zijde krijgt vorm — met de karakteristieke rij ademgaten.",
+        images: ["/images/proces/paua/stap-4.jpg"],
+      },
+      {
+        caption:
+          "Met de vlam in het RVS gebrand: aanloopkleuren, zoals de oceaan zijn kleuren in de schelp legde.",
+        images: ["/images/proces/paua/stap-5.jpg"],
+      },
+    ],
+  },
+  {
     id: "honda-zwaan",
     title: "Honda Zwaan",
     category: "sculpturen",
