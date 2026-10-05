@@ -306,6 +306,53 @@ export const portfolioItems: PortfolioItem[] = [
     ],
   },
   {
+    id: "blauwe-waterlelies",
+    title: "Blauwe Waterlelies",
+    category: "bloemen",
+    description:
+      "De Egyptenaren geloofden dat de zon uit een bloem werd geboren. De blauwe waterlelie, Nymphaea caerulea, opgekomen uit het donkere oerwater. De bloem kwam uit de modder en bloeide zuiver op, een teken van groei en verlichting. Ze opent bij zonsopgang en sluit bij zonsondergang, elke dag opnieuw. Zo werd ze de bloem van Ra, de Egyptische zonnegod die elke ochtend opnieuw geboren wordt. Deze twee blauwe waterlelies zijn gemaakt van hergebruikte materialen die een tweede leven kregen. De bladeren zijn van rood koper, de bloemen van RVS en de harten van messing. Alles met de hand gemaakt.",
+    imageSrc: "/images/portfolio/blauwe-waterlelies.jpg",
+    featured: false,
+    cardPosition: "44% 50%",
+    dimensions: "80 × 40 cm",
+    material: "Rood koper, RVS, messing",
+    images: [
+      "/images/portfolio/blauwe-waterlelies.jpg",
+      "/images/portfolio/blauwe-waterlelies-2.jpg",
+    ],
+    process: [
+      {
+        caption: "Een afgedankte boiler wordt opengeslepen.",
+        images: ["/images/proces/blauwe-waterlelies/stap-1.jpg"],
+      },
+      {
+        caption: "Onder het omhulsel zit een ketel van rood koper.",
+        images: ["/images/proces/blauwe-waterlelies/stap-2.jpg"],
+      },
+      {
+        caption: "Het koper gaat door de wals en wordt weer vlak.",
+        images: ["/images/proces/blauwe-waterlelies/stap-3.jpg"],
+      },
+      {
+        caption: "Het blad wordt afgetekend en uitgeknipt.",
+        images: ["/images/proces/blauwe-waterlelies/stap-4.jpg"],
+      },
+      {
+        caption: "Met de hamer krijgt het blad zijn golving.",
+        images: ["/images/proces/blauwe-waterlelies/stap-5.jpg"],
+      },
+      {
+        caption:
+          "Het koperen blad met zijn inkeping, met daarnaast de RVS-lagen voor de bloem.",
+        images: ["/images/proces/blauwe-waterlelies/stap-6.jpg"],
+      },
+      {
+        caption: "De eerste lelie op haar blad, het RVS nog blank.",
+        images: ["/images/proces/blauwe-waterlelies/stap-7.jpg"],
+      },
+    ],
+  },
+  {
     id: "paua",
     title: "Paua",
     category: "sculpturen",
