@@ -41,3 +41,6 @@ memory.md
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# audit-screenshots (lokaal)
+/audit/screenshots/
