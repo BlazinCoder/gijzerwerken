@@ -45,7 +45,6 @@ export const portfolioItems: PortfolioItem[] = [
       "Musa basjoo, één leven, volledig gegeven, dan doorgegeven. Elk koperen blad is met de hand gemaakt, en geen twee zijn hetzelfde in maat of vorm. Net als echte bladeren. Samen vormen ze een plant van bijna twee meter hoog. Deze plant heeft geen stam. Hij is gemaakt van opgerolde bladeren die vanuit het midden omhoog openen, laag na laag. Nieuwe bladeren groeien, oude verwelken en sterven af, en dan begint het allemaal opnieuw.",
     imageSrc: "/images/portfolio/musa-basjoo/musa-basjoo.jpg",
     featured: true,
-    isNew: true,
     material: "Koper",
     images: [
       "/images/portfolio/musa-basjoo/musa-basjoo.jpg",
@@ -313,6 +312,7 @@ export const portfolioItems: PortfolioItem[] = [
       "De Egyptenaren geloofden dat de zon uit een bloem werd geboren. De blauwe waterlelie, Nymphaea caerulea, opgekomen uit het donkere oerwater. De bloem kwam uit de modder en bloeide zuiver op, een teken van groei en verlichting. Ze opent bij zonsopgang en sluit bij zonsondergang, elke dag opnieuw. Zo werd ze de bloem van Ra, de Egyptische zonnegod die elke ochtend opnieuw geboren wordt. Deze twee blauwe waterlelies zijn gemaakt van hergebruikte materialen die een tweede leven kregen. De bladeren zijn van rood koper, de bloemen van RVS en de harten van messing. Alles met de hand gemaakt.",
     imageSrc: "/images/portfolio/blauwe-waterlelies.jpg",
     featured: false,
+    isNew: true,
     cardPosition: "44% 50%",
     dimensions: "80 × 40 cm",
     material: "Rood koper, RVS, messing",
