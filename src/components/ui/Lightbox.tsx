@@ -41,8 +41,12 @@ export default function Lightbox({
   const activePhoto = photos[photoIndex];
   const hasMultipleItems = items.length > 1;
 
-  // Reset photo state when navigating to a different portfolio item
+  // Reset photo state when navigating to a different portfolio item.
+  // Niet bij mount: dan zou initialPhotoIndex (spotlight-thumbnails) overschreven worden.
+  const prevIndexRef = useRef(currentIndex);
   useEffect(() => {
+    if (prevIndexRef.current === currentIndex) return;
+    prevIndexRef.current = currentIndex;
     setPhotoIndex(0);
     setImgError(false);
   }, [currentIndex]);

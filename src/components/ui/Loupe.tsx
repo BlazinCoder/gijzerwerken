@@ -352,7 +352,7 @@ export default function Loupe({ src, imgRef, className = "", disabled = false, c
             type="button"
             onClick={() => setActive((a) => !a)}
             aria-pressed={active}
-            aria-label={active ? "Vergrootglas uit" : "Vergrootglas aan"}
+            aria-label="Vergrootglas"
             className={`flex h-9 w-9 items-center justify-center rounded-full bg-iron-900/60 backdrop-blur-sm transition-colors hover:text-copper focus:outline-none focus-visible:ring-2 focus-visible:ring-copper ${
               active ? "text-copper ring-1 ring-copper/60" : "text-cream"
             }`}
