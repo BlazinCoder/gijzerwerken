@@ -1,8 +1,10 @@
 "use client";
 
 import { useEffect, useCallback, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
 import type { PortfolioItem, Category } from "@/data/portfolio";
+import Loupe from "@/components/ui/Loupe";
 
 const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -30,13 +32,8 @@ export default function Lightbox({
   const item = items[currentIndex];
   const [imgError, setImgError] = useState(false);
   const [photoIndex, setPhotoIndex] = useState(initialPhotoIndex);
-  const [lensVisible, setLensVisible] = useState(false);
-  const [lensPos, setLensPos] = useState({ x: 0, y: 0, bgX: 0, bgY: 0, bgW: 0, bgH: 0 });
   const imgRef = useRef<HTMLImageElement>(null);
   const reducedMotion = useReducedMotion();
-
-  const LENS_SIZE = 200;
-  const ZOOM = 3;
 
   const photos =
     item?.images && item.images.length > 0 ? item.images : item ? [item.imageSrc] : [];
@@ -48,13 +45,11 @@ export default function Lightbox({
   useEffect(() => {
     setPhotoIndex(0);
     setImgError(false);
-    setLensVisible(false);
   }, [currentIndex]);
 
-  // Reset image-error + lens when photo within item changes
+  // Reset image-error when photo within item changes
   useEffect(() => {
     setImgError(false);
-    setLensVisible(false);
   }, [photoIndex]);
 
   const goItemPrev = useCallback(() => {
@@ -110,11 +105,13 @@ export default function Lightbox({
     };
   }, [onClose, goItemPrev, goItemNext, goPhotoPrev, goPhotoNext, hasMultiplePhotos]);
 
-  if (!item) return null;
+  if (!item || typeof document === "undefined") return null;
 
   const fadeDuration = reducedMotion ? 0 : 0.3;
 
-  return (
+  // Portal naar body: <main> is een eigen stacking context (z-[1]), waardoor z-[60] hierbinnen
+  // onder de vaste navbar (z-50) viel en de bovenkant van de lightbox (sluitknop) bedekt werd.
+  return createPortal(
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -156,7 +153,12 @@ export default function Lightbox({
                 </button>
               )}
 
-              <div className="relative flex h-[50vh] w-full items-center justify-center md:h-[70vh]">
+              <Loupe
+                src={activePhoto}
+                imgRef={imgRef}
+                disabled={imgError}
+                className="flex h-[50vh] w-full items-center justify-center md:h-[70vh]"
+              >
                 {imgError ? (
                   <div
                     className={`h-full w-full rounded-lg bg-gradient-to-br ${CATEGORY_GRADIENTS[item.category]}`}
@@ -173,41 +175,12 @@ export default function Lightbox({
                       animate={{ opacity: 1 }}
                       exit={{ opacity: 0 }}
                       transition={{ duration: fadeDuration, ease: APPLE_EASE }}
-                      onMouseEnter={() => setLensVisible(true)}
-                      onMouseLeave={() => setLensVisible(false)}
-                      onMouseMove={(e) => {
-                        const el = e.currentTarget;
-                        const rect = el.getBoundingClientRect();
-                        const x = e.clientX - rect.left;
-                        const y = e.clientY - rect.top;
-                        const bgW = rect.width * ZOOM;
-                        const bgH = rect.height * ZOOM;
-                        const bgX = -(x * ZOOM - LENS_SIZE / 2);
-                        const bgY = -(y * ZOOM - LENS_SIZE / 2);
-                        setLensPos({ x, y, bgX, bgY, bgW, bgH });
-                      }}
-                      className="max-h-full max-w-full rounded-lg object-contain md:cursor-crosshair"
+                      className="max-h-full max-w-full rounded-lg object-contain"
                       onError={() => setImgError(true)}
                     />
                   </AnimatePresence>
                 )}
-                {!imgError && lensVisible && !reducedMotion && (
-                  <div
-                    aria-hidden="true"
-                    className="pointer-events-none absolute hidden rounded-full border-2 border-copper/60 shadow-2xl md:block"
-                    style={{
-                      width: LENS_SIZE,
-                      height: LENS_SIZE,
-                      left: (imgRef.current?.offsetLeft ?? 0) + lensPos.x - LENS_SIZE / 2,
-                      top: (imgRef.current?.offsetTop ?? 0) + lensPos.y - LENS_SIZE / 2,
-                      backgroundImage: `url(${activePhoto})`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundSize: `${lensPos.bgW}px ${lensPos.bgH}px`,
-                      backgroundPosition: `${lensPos.bgX}px ${lensPos.bgY}px`,
-                    }}
-                  />
-                )}
-              </div>
+              </Loupe>
 
               {/* Photo next (within item) */}
               {hasMultiplePhotos && (
@@ -302,6 +275,7 @@ export default function Lightbox({
           </div>
         )}
       </motion.div>
-    </motion.div>
+    </motion.div>,
+    document.body,
   );
 }

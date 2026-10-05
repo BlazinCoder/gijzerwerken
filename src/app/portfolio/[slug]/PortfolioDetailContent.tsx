@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -11,6 +11,7 @@ import {
 import PortfolioCard from "@/components/ui/PortfolioCard";
 import SectionHeader from "@/components/ui/SectionHeader";
 import MaakProces from "@/components/sections/MaakProces";
+import Loupe from "@/components/ui/Loupe";
 
 const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -36,6 +37,7 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
   );
   const [activeIdx, setActiveIdx] = useState(0);
   const [imgError, setImgError] = useState(false);
+  const imgRef = useRef<HTMLImageElement>(null);
   const related = useMemo(() => pickRelated(item, 3), [item]);
 
   useEffect(() => {
@@ -79,13 +81,19 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: APPLE_EASE }}
           >
-            <div className="overflow-hidden rounded-lg ring-1 ring-iron-700 bg-iron-800">
+            <Loupe
+              src={images[activeIdx]}
+              imgRef={imgRef}
+              disabled={imgError}
+              className="rounded-lg ring-1 ring-iron-700 bg-iron-800"
+            >
               <AnimatePresence mode="wait">
                 {imgError ? (
                   <div className="h-[60vh] w-full bg-gradient-to-br from-iron-700 via-iron-800 to-copper-dark" />
                 ) : (
                   <motion.img
                     key={images[activeIdx]}
+                    ref={imgRef}
                     src={images[activeIdx]}
                     alt={`${item.title} — foto ${activeIdx + 1} van ${images.length}`}
                     initial={{ opacity: 0 }}
@@ -97,7 +105,7 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
                   />
                 )}
               </AnimatePresence>
-            </div>
+            </Loupe>
 
             {images.length > 1 && (
               <div className="mt-4 flex flex-wrap gap-2">
