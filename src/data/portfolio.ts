@@ -163,7 +163,7 @@ export const portfolioItems: PortfolioItem[] = [
     featured: true,
     gridCell: "tall",
     cardPosition: "50% 30%",
-    material: "Staal & koper",
+    material: "Roestvast staal & koper",
     images: [
       "/images/portfolio/ridderspoor.jpg",
       "/images/portfolio/ridderspoor-2.jpg",
