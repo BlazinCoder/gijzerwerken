@@ -175,24 +175,6 @@ async function scrollToBottom(page: Page, duration: number) {
   await wait(1000);
 
   // ========================================
-  // E. SHOP (6 seconden)
-  // ========================================
-  console.log('E. Shop...');
-  await page.goto(`${BASE_URL}/shop`, { waitUntil: 'networkidle' });
-  await hideCursor();
-  await wait(1000);
-
-  // Scroll door product grid
-  await smoothScroll(page, 500, 2000);
-
-  // Hover over een product card
-  const shopCards = page.locator('.group').filter({ has: page.locator('img') });
-  if ((await shopCards.count()) > 0) {
-    await shopCards.first().hover();
-  }
-  await wait(2000);
-
-  // ========================================
   // F. CONTACT (4 seconden)
   // ========================================
   console.log('F. Contact...');

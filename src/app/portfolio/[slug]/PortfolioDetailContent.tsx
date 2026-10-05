@@ -65,7 +65,7 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
   const contactHref = `/contact?onderwerp=Maatwerk&stuk=${encodeURIComponent(item.title)}`;
 
   return (
-    <main className="min-h-screen bg-iron-900 px-4 py-24 md:py-32">
+    <main className="min-h-screen bg-iron-900 px-4 page-top pb-24 md:pb-32">
       <div className="mx-auto max-w-6xl">
         <Link
           href="/portfolio"
@@ -96,6 +96,8 @@ export default function PortfolioDetailContent({ item }: PortfolioDetailContentP
                     ref={imgRef}
                     src={images[activeIdx]}
                     alt={`${item.title} — foto ${activeIdx + 1} van ${images.length}`}
+                    loading="eager"
+                    fetchPriority="high"
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}

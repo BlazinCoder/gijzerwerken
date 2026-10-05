@@ -130,7 +130,7 @@ export default function PortfolioContent() {
   }, [activeCategory]);
 
   return (
-    <div className="min-h-screen pt-28 pb-16 px-6">
+    <div className="min-h-screen page-top pb-16 px-6">
       {/* Page header */}
       <div className="text-center">
         <motion.h1
@@ -160,13 +160,15 @@ export default function PortfolioContent() {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.3, ease: APPLE_EASE }}
-        className="mt-10 flex justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide pb-2"
+        className="mt-10 -mx-6 flex justify-start md:justify-center gap-2 md:gap-3 overflow-x-auto scrollbar-hide px-6 pb-2"
       >
         {FILTER_OPTIONS.map((option) => (
           <button
             key={option.value}
+            type="button"
             onClick={() => setActiveCategory(option.value)}
-            className={`relative px-4 py-2 text-sm tracking-widest uppercase transition-all duration-300 active:scale-[0.97] ${
+            aria-pressed={activeCategory === option.value}
+            className={`relative shrink-0 px-4 py-2 text-sm tracking-widest uppercase transition-all duration-300 active:scale-[0.97] ${
               activeCategory === option.value
                 ? "text-copper"
                 : "text-cream/50 hover:text-cream/70"

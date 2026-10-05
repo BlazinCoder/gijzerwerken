@@ -1,5 +1,4 @@
 User-agent: *
 Allow: /
-Disallow: /shop
 
 Sitemap: https://gijzerwerken.com/sitemap.xml

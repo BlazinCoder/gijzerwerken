@@ -12,6 +12,26 @@
   --color-ember-glow: #f5c96b;
   --color-rust: #8b3a2a;
   --color-cream: #f5f0eb;
+  /* Hoogte van de vaste navbar (py-3 + h-16 + border; vanaf sm py-5 + h-20 + border).
+     Verandert de navbar, dan verandert dit mee. */
+  --navbar-h: 89px;
+}
+
+@media (min-width: 640px) {
+  :root {
+    --navbar-h: 121px;
+  }
+}
+
+/* Gedeelde bovenkant voor pagina's met een eigen kop: altijd onder de navbar */
+.page-top {
+  padding-top: calc(var(--navbar-h) + 1.5rem);
+}
+
+@media (min-width: 768px) {
+  .page-top {
+    padding-top: calc(var(--navbar-h) + 2rem);
+  }
 }
 
 html {

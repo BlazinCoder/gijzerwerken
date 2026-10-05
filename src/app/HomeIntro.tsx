@@ -19,7 +19,7 @@ export default function HomeIntro() {
 
     timerRef.current = setTimeout(() => {
       navigatedRef.current = true;
-      router.push("/portfolio");
+      router.replace("/portfolio");
     }, delay);
 
     return () => {

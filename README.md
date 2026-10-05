@@ -53,7 +53,7 @@ Genereert een statische export in de `/out/` directory.
 src/
   app/          Pagina's (Next.js App Router)
   components/   Herbruikbare componenten
-  data/         Portfolio en shop data
+  data/         Portfolio-data
 public/         Statische bestanden (robots.txt, sitemap.xml)
 ```
 
@@ -65,5 +65,4 @@ public/         Statische bestanden (robots.txt, sitemap.xml)
 | `/portfolio`| Filterbaar portfolio grid + lightbox  |
 | `/over`     | Biografie en werkplaats               |
 | `/proces`   | Visueel 5-stappen werkproces          |
-| `/shop`     | Productcatalogus met prijzen          |
 | `/contact`  | Contactformulier + bedrijfsinfo       |

@@ -85,7 +85,8 @@ export default function NewestWork() {
           <img
             src={newestItem.imageSrc}
             alt={newestItem.title}
-            loading="lazy"
+            loading="eager"
+            fetchPriority="high"
             className="w-full max-h-[500px] object-cover rounded-lg transition-transform duration-700 ease-out group-hover:scale-[1.02]"
           />
           {/* Verkocht-chip — zelfde stijl als PortfolioCard */}

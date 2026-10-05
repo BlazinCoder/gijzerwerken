@@ -71,9 +71,6 @@ src/
 │   ├── proces/
 │   │   ├── page.tsx          # Server component met metadata
 │   │   └── ProcesContent.tsx # Client: tijdlijn
-│   ├── shop/
-│   │   ├── page.tsx          # Server component met metadata
-│   │   └── ShopContent.tsx   # Client: productgrid
 │   └── contact/
 │       ├── page.tsx          # Server component met metadata + JSON-LD
 │       └── ContactContent.tsx # Client: formulier + info
@@ -82,7 +79,7 @@ src/
 │   │   ├── Navbar.tsx        # Sticky, transparant→solid+blur bij scroll
 │   │   └── Footer.tsx        # Logo, Instagram, copyright
 │   ├── sections/
-│   │   ├── Hero.tsx          # Fullscreen met particles (reduced-motion: geen particles)
+│   │   ├── Hero.tsx          # Homepage-hero (100svh): logo, vonken, ademende gloed; hover alleen met muis
 │   │   ├── FeaturedWork.tsx  # Uitgelicht werk sectie (homepage)
 │   │   └── MaakProces.tsx    # Scroll-gekoppeld maakproces-verhaal op detailpagina (optioneel per item)
 │   ├── ui/
@@ -93,13 +90,13 @@ src/
 │   │   ├── SectionHeader.tsx # Herbruikbare sectie-titel met copper underline
 │   │   ├── AnimatedCounter.tsx # Telt op bij scroll-into-view
 │   │   ├── ParallaxImage.tsx # Gradient placeholder met parallax
-│   │   ├── ShopCard.tsx      # Productkaart met prijs, hover zoom
 │   │   └── ContactForm.tsx   # Formulier met validatie, Formspree submit
 │   └── three/
-│       └── SparkParticles.tsx # R3F 3-laags vonken (near/mid/far + muis-interactie)
+│       ├── SparkParticles.tsx # R3F: ambient 3 lagen (90) + burst-pool vanuit het logo, delta-tijd, ronde vonken
+│       ├── HeroEmbers.tsx    # CSS: 12 vonkjes rond het logo (touch) / 7 statische gloeipunten (reduced motion)
+│       └── ForgeSparks.tsx   # CSS-vonken op de achtergrond van alle pagina's (vaste seed)
 ├── data/
-│   ├── portfolio.ts          # PortfolioItem type + demo data + categorieën
-│   └── shop.ts               # ShopItem type + demo data + formatPrice
+│   └── portfolio.ts          # PortfolioItem type + demo data + categorieën
 └── public/
     ├── robots.txt
     └── sitemap.xml
@@ -113,8 +110,6 @@ src/
 - Body scroll lock via `body.menu-open` class (hergebruikt door Navbar + Lightbox)
 - Static export: `output: 'export'` in next.config.mjs
 - Portfolio data in `src/data/portfolio.ts` — single source of truth
-- Shop data in `src/data/shop.ts` — importeert Category uit portfolio.ts
-- Prijsformattering: `Intl.NumberFormat('nl-NL')` via `formatPrice` uit shop.ts
 - `useSearchParams` altijd in `Suspense` wrapper
 - Alle foto-slots zijn gevuld; gradient alleen als onError fallback bij ontbrekende afbeelding
 - 3D tilt via useRef + directe DOM mutatie (geen React state op mousemove)
@@ -122,12 +117,23 @@ src/
 - Page metadata via server component wrappers (page.tsx = server, *Content.tsx = client)
 - Alle animaties respecteren `prefers-reduced-motion`
 - Vergrootglas alleen via `Loupe` (opt-in, alleen `(hover: hover) and (pointer: fine)`), nooit een loupe die bij gewoon hoveren verschijnt
+- Bovenkant van een pagina met eigen kop: class `page-top` (globals.css) = `var(--navbar-h)` + 1,5rem (md: 2rem). `--navbar-h` is 89px (<sm) / 121px (≥sm) en moet meeveranderen met de navbar. Geen losse `pt-28`/`pt-32` meer
+- Framer `animate` met `scale`/`x`/`y` op een element met Tailwind `-translate-*`: de translate verdwijnt (Framer zet een inline `transform`). Centreren dan via `style={{ x: "-50%", y: "-50%" }}`
+- Hero-interactie alleen met een echte muis (`onPointerEnter` + `pointerType === "mouse"`): een tik op touch doet niets
+- Vonken-tijd altijd in seconden (`delta` uit `useFrame`), nooit per frame
 ## SEO
 - Per-pagina unieke `title` + `description` + OpenGraph tags
 - Root layout: `metadataBase` voor absolute OG URL resolutie
 - Contact pagina: LocalBusiness JSON-LD schema
-- `public/robots.txt` + `public/sitemap.xml` (handmatig, 6 pagina's)
+- `public/robots.txt` + `public/sitemap.xml` (handmatig, 26 URL's)
 - Favicon: SVG in `src/app/icon.svg`
+
+## Besluiten (Luke)
+- **/shop is verwijderd (2026-10-06).** De route, ShopCard en `data/shop.ts` staan alleen nog in de git-geschiedenis (laatste versie: tag `checkpoint-voor-ronde-1`). `/shop` geeft de 404-pagina.
+- **Stem:** beschrijvingen van werken en citaten van Gijs in de ik-vorm. Overige site-teksten (Over, Proces, UI) in de derde persoon over Gijs. "We" wordt niet gebruikt. *(Nog doorvoeren in de tekstronde.)*
+- **Koppen:** Nederlandse schrijfwijze, alleen een hoofdletter aan het begin ("Het maakproces"). *(Nog doorvoeren.)*
+- **Noodventiel i18n:** ontbreekt een EN-vertaling, dan toont de pagina tijdelijk de NL-tekst met `noindex`, en geeft de build een waarschuwing in plaats van een fout. *(Voor de i18n-ronde.)*
+- **Aambeeld-silhouet bij hover op het hero-logo: weg** (ronde 1).
 
 ## Beslissingen log
 - **2026-04-18:** R3F v8 + drei v9 gekozen (v9 vereist React 19, wij gebruiken React 18)
@@ -174,11 +180,13 @@ src/
 
 - **2026-10-05:** Spotlight-lightbox opende altijd op foto 1: het `[currentIndex]`-reset-effect in Lightbox draaide ook bij mount en overschreef `initialPhotoIndex`. Reset nu alleen bij een echte wissel van werk (vorige index in een ref). Vergrootglasknop heeft een vast `aria-label="Vergrootglas"`, de status zit alleen in `aria-pressed` (een wisselend aan/uit-label plus aria-pressed las als "Vergrootglas uit, aan"). 3× bewust niet begrensd.
 
+- **2026-10-06:** Ronde 1 uit `audit/AUDIT-2026-10.md` (rollback-tag `checkpoint-voor-ronde-1`). **Vonken (Deel C):** SparkParticles herbouwd binnen R3F (optie A). Ronde vonken via een radiale CanvasTexture als `map`, grootte per vonk via `onBeforeCompile` (`gl_PointSize = size * aSize`), alles in `delta`-seconden. Ambient 30/35/25 met sinusdrift, twinkeling en fade-in na reset; muis-afstoting per diepte omgerekend (straal 1,2, 0,15/s). Burst-pool van 105: intro 70 op 700 ms, hover 35 met een eigen cooldown van 2 s tussen hover-bursts (de intro telt niet mee, anders kan hover vóór de doorsturing op 2 s nooit vuren). Kegel ±65° omhoog met zwaartekracht en luchtweerstand, levensduur 0,5–0,9 s, kleur wit-goud → goud → koper, zacht uitdoven. Burst-maten staan in **logobreedtes** en worden per vonk naar de diepte omgerekend, zodat de reikwijdte op elk scherm ±1,5× de logobreedte blijft. Mobiel/touch: geen WebGL, alleen `HeroEmbers` (CSS). Reduced motion: 7 statische gloeipunten. De zichtbaarheid loopt via media queries, dus de prerender klopt al. Hover: logo ×1,06, brightness 1,12. Ring, amberflits en aambeeld zijn weg. De logo-gloed ademt 5 s ±4 %. **Gevonden en gefixt:** de logo-gloed stond sinds sprint 5 rechtsonder naast het logo, omdat Framer's `scale`-animatie de Tailwind-translate overschreef. De intro-gloed van PageTransition is weg op `/` (`usePathname`); de transition zelf is verder ongewijzigd. Hero `h-[100svh]`, scrollpijl weg. **Quick wins:** `router.replace` in HomeIntro; `page-top` op portfolio, contact, over, proces, detail en 404; filterpillen `justify-start md:justify-center` met `-mx-6 px-6`, `shrink-0` en `aria-pressed`; spotlight-foto en detail-hoofdfoto `loading="eager"` + `fetchPriority="high"` (Next's eigen React kent de camelCase-prop). Lighthouse mobiel /portfolio: perf 75 (gelijk), LCP 22,7 s tegen 23,0 s live. De discovery-check is nu groen, maar de echte winst zit in beeldvarianten (#14). /shop weg; robots, README en `scripts/record-promo.ts` (sectie E) zijn bijgewerkt.
+
 ## Openstaande taken
 - ~~Portfolio grid met filterbare categorieën~~ (Sprint 2)
 - ~~Over Gijs pagina~~ (Sprint 3)
 - ~~Het Proces pagina~~ (Sprint 3)
-- ~~Shop pagina~~ (Sprint 4)
+- ~~Shop pagina~~ (Sprint 4; verwijderd 2026-10-06, besluit Luke)
 - ~~Contact pagina~~ (Sprint 4)
 - ~~SEO optimalisatie~~ (Sprint 5)
 - ~~Custom cursor + page transitions + scroll-animaties~~ (Sprint 5)
