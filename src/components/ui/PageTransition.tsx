@@ -1,5 +1,6 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { motion, useReducedMotion } from "framer-motion";
 
 const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
@@ -10,22 +11,27 @@ export default function PageTransition({
   children: React.ReactNode;
 }) {
   const prefersReduced = useReducedMotion();
+  const pathname = usePathname();
   const duration = prefersReduced ? 0 : 0.4;
+  // Geen gloed over het hele scherm bij de homepage-intro: daar spelen de vonken rond het logo
+  const showGlow = pathname !== "/";
 
   return (
     <div className="relative">
       {/* Copper glow overlay — masks the flash between unmount/mount.
           Hidden on mobile to keep transitions clean and snappy. */}
-      <motion.div
-        initial={{ opacity: 0.5 }}
-        animate={{ opacity: 0 }}
-        transition={{ duration: prefersReduced ? 0 : 0.6, ease: APPLE_EASE }}
-        className="fixed inset-0 pointer-events-none z-[55] hidden md:block"
-        style={{
-          background:
-            "radial-gradient(ellipse at center, rgba(196,122,42,0.12) 0%, transparent 70%)",
-        }}
-      />
+      {showGlow && (
+        <motion.div
+          initial={{ opacity: 0.5 }}
+          animate={{ opacity: 0 }}
+          transition={{ duration: prefersReduced ? 0 : 0.6, ease: APPLE_EASE }}
+          className="fixed inset-0 pointer-events-none z-[55] hidden md:block"
+          style={{
+            background:
+              "radial-gradient(ellipse at center, rgba(196,122,42,0.12) 0%, transparent 70%)",
+          }}
+        />
+      )}
 
       {/* Page content */}
       <motion.div

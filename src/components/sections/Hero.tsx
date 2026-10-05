@@ -1,13 +1,20 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import dynamic from "next/dynamic";
-import { motion, AnimatePresence, useReducedMotion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
+import type { BurstRequest } from "@/components/three/SparkParticles";
+import HeroEmbers from "@/components/three/HeroEmbers";
 
 const SparkParticles = dynamic(
   () => import("@/components/three/SparkParticles"),
   { ssr: false }
 );
+
+const INTRO_BURST_AT_MS = 700; // het logo staat (scale-in 0,2 s + 1,0 s, visueel klaar rond 0,7 s)
+const INTRO_BURST_COUNT = 70;
+const HOVER_BURST_COUNT = 35;
+const BURST_COOLDOWN_MS = 2000;
 
 const APPLE_EASE = [0.25, 0.46, 0.45, 0.94] as const;
 
@@ -39,9 +46,10 @@ const scaleInVariants = {
 export default function Hero() {
   const prefersReduced = useReducedMotion();
   const [isHovered, setIsHovered] = useState(false);
-  const [initialBurst, setInitialBurst] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
+  const [burst, setBurst] = useState<BurstRequest | null>(null);
+  const logoRef = useRef<HTMLDivElement>(null);
+  const lastHoverBurstRef = useRef(-Infinity);
 
   useEffect(() => {
     setIsDesktop(
@@ -49,38 +57,40 @@ export default function Hero() {
     );
   }, []);
 
-  // Fire initial burst on mount for spectaculaire eerste indruk
-  useEffect(() => {
-    const t = setTimeout(() => setInitialBurst(true), 300);
-    const t2 = setTimeout(() => setInitialBurst(false), 600);
-    return () => {
-      clearTimeout(t);
-      clearTimeout(t2);
-    };
+  const fireBurst = useCallback((count: number) => {
+    const now = performance.now();
+    setBurst((prev) => ({ id: (prev?.id ?? 0) + 1, count, at: now }));
   }, []);
 
-  // Auto-reset for touch devices
+  // Intro: één rustige vonkenregen zodra het logo staat (alleen desktop met WebGL)
   useEffect(() => {
-    if (isHovered) {
-      timeoutRef.current = setTimeout(() => setIsHovered(false), 1500);
-    }
-    return () => {
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    };
-  }, [isHovered]);
+    if (!isDesktop || prefersReduced) return;
+    const t = setTimeout(() => fireBurst(INTRO_BURST_COUNT), INTRO_BURST_AT_MS);
+    return () => clearTimeout(t);
+  }, [isDesktop, prefersReduced, fireBurst]);
 
-  const handleMouseEnter = () => setIsHovered(true);
-  const handleMouseLeave = () => {
-    if (timeoutRef.current) clearTimeout(timeoutRef.current);
+  // Alleen een echte muis: een tik op touch doet niets
+  const handlePointerEnter = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse" || !isDesktop) return;
+    setIsHovered(true);
+    // Cooldown tussen hover-bursts; de intro telt niet mee, anders kan de
+    // hover-burst vóór de doorsturing (2 s) nooit afgaan
+    const now = performance.now();
+    if (!prefersReduced && now - lastHoverBurstRef.current >= BURST_COOLDOWN_MS) {
+      lastHoverBurstRef.current = now;
+      fireBurst(HOVER_BURST_COUNT);
+    }
+  };
+  const handlePointerLeave = (e: React.PointerEvent) => {
+    if (e.pointerType !== "mouse") return;
     setIsHovered(false);
   };
-  const handleTouchStart = () => setIsHovered(true);
 
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-iron-900">
-      {/* Three.js spark particles background — desktop only */}
+    <section className="relative h-[100svh] flex items-center justify-center overflow-hidden bg-iron-900">
+      {/* Three.js vonken — alleen desktop met muis */}
       {!prefersReduced && isDesktop && (
-        <SparkParticles burst={isHovered || initialBurst} />
+        <SparkParticles burst={burst} originRef={logoRef} />
       )}
 
       {/* Content */}
@@ -91,90 +101,53 @@ export default function Hero() {
         animate="visible"
       >
         <motion.div variants={scaleInVariants}>
-          {/* Logo container with hover effects */}
+          {/* Logo — hover alleen met een echte muis */}
           <div
-            className="relative inline-block cursor-pointer"
-            onMouseEnter={handleMouseEnter}
-            onMouseLeave={handleMouseLeave}
-            onTouchStart={handleTouchStart}
+            ref={logoRef}
+            className="relative inline-block"
+            onPointerEnter={handlePointerEnter}
+            onPointerLeave={handlePointerLeave}
           >
-            {/* Ambient copper glow behind logo — always visible, pulses */}
+            {/* Koperen gloed achter het logo — ademt rustig, stil bij reduced motion */}
             <motion.div
-              className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none rounded-full"
+              className="absolute top-1/2 left-1/2 pointer-events-none rounded-full"
               style={{
+                // x/y via Framer: een Tailwind-translate verdwijnt onder Framer's inline transform
+                x: "-50%",
+                y: "-50%",
                 width: "150%",
                 height: "150%",
                 background:
                   "radial-gradient(circle, rgba(196,122,42,0.25) 0%, rgba(196,122,42,0.08) 40%, transparent 70%)",
                 filter: "blur(40px)",
               }}
-              animate={{
-                scale: isHovered ? [1.1, 1.2, 1.1] : [1, 1.08, 1],
-                opacity: isHovered ? 1 : 0.7,
-              }}
+              animate={
+                prefersReduced
+                  ? { opacity: 0.7 }
+                  : { scale: [1, 1.04, 1], opacity: isHovered ? 1 : 0.7 }
+              }
               transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
+                scale: { duration: 5, repeat: Infinity, ease: "easeInOut" },
+                opacity: { duration: 0.4, ease: APPLE_EASE },
               }}
             />
 
-            {/* Glow ring behind logo — intensifies on hover */}
-            <div
-              className="absolute inset-0 rounded-full pointer-events-none"
-              style={{
-                boxShadow: isHovered
-                  ? "0 0 40px 10px rgba(232,168,73,0.3), 0 0 80px 20px rgba(196,122,42,0.15)"
-                  : "0 0 0px 0px rgba(232,168,73,0)",
-                transition: "box-shadow 0.4s cubic-bezier(0.25,0.46,0.45,0.94)",
-              }}
-            />
+            {/* CSS-vonken (touch) en statische gloeipunten (reduced motion) */}
+            <HeroEmbers />
 
-            {/* Logo with zoom + heat glow — responsive sizing */}
+            {/* Logo — bij hover iets groter en warmer */}
             <motion.img
               src="/images/logo-white.png"
               alt="Gijzerwerken - Upcycled Metaalkunst Logo"
               className="h-24 sm:h-32 md:h-40 lg:h-56 w-auto mx-auto relative"
               animate={{
-                scale: isHovered ? 1.3 : 1,
+                scale: isHovered ? 1.06 : 1,
                 filter: isHovered
-                  ? "brightness(1.5) drop-shadow(0 0 20px rgba(196,122,42,0.8))"
+                  ? "brightness(1.12) drop-shadow(0 0 14px rgba(196,122,42,0.45))"
                   : "brightness(1) drop-shadow(0 0 0px rgba(196,122,42,0))",
               }}
               transition={{ duration: 0.4, ease: APPLE_EASE }}
             />
-
-            {/* Flash overlay — "anvil strike" */}
-            <AnimatePresence>
-              {isHovered && (
-                <motion.div
-                  className="absolute inset-0 bg-amber-400/30 pointer-events-none rounded-full"
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.3, 0] }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.3, times: [0, 0.3, 1] }}
-                />
-              )}
-            </AnimatePresence>
-
-            {/* Anvil silhouette */}
-            <AnimatePresence>
-              {isHovered && (
-                <motion.svg
-                  className="absolute -bottom-10 left-1/2 -translate-x-1/2 pointer-events-none"
-                  width="80"
-                  height="40"
-                  viewBox="0 0 80 40"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 0.3, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.8 }}
-                  transition={{ duration: 0.4, ease: APPLE_EASE }}
-                >
-                  <rect x="5" y="2" width="70" height="8" rx="2" fill="#2a2a2a" stroke="#c47a2a" strokeWidth="1" />
-                  <path d="M10,10 H70 L65,35 H15 Z" fill="#2a2a2a" stroke="#c47a2a" strokeWidth="1" />
-                </motion.svg>
-              )}
-            </AnimatePresence>
           </div>
         </motion.div>
 
@@ -191,32 +164,6 @@ export default function Hero() {
         >
           Upcycled metaalkunst uit Schiedam
         </motion.p>
-      </motion.div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.6, delay: 1.4, ease: APPLE_EASE }}
-      >
-        <motion.svg
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          className="text-cream/30"
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-        >
-          <path
-            d="M12 5v14M5 12l7 7 7-7"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-          />
-        </motion.svg>
       </motion.div>
     </section>
   );

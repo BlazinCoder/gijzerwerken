@@ -2,19 +2,30 @@
 
 import { useMemo } from "react";
 
+// Vaste seed (mulberry32): server-prerender en client geven dezelfde vonken,
+// dus geen hydration-mismatch op de inline-stijlen.
+function mulberry32(seed: number) {
+  return () => {
+    seed |= 0;
+    seed = (seed + 0x6d2b79f5) | 0;
+    let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+    t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+    return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
 export default function ForgeSparks() {
-  const sparks = useMemo(
-    () =>
-      Array.from({ length: 30 }, (_, i) => ({
-        id: i,
-        left: Math.random() * 100,
-        delay: Math.random() * 8,
-        duration: 3 + Math.random() * 3,
-        xDrift: (Math.random() - 0.5) * 160,
-        size: 2 + Math.random() * 2,
-      })),
-    []
-  );
+  const sparks = useMemo(() => {
+    const random = mulberry32(0x6a1e);
+    return Array.from({ length: 30 }, (_, i) => ({
+      id: i,
+      left: random() * 100,
+      delay: random() * 8,
+      duration: 3 + random() * 3,
+      xDrift: (random() - 0.5) * 160,
+      size: 2 + random() * 2,
+    }));
+  }, []);
 
   return (
     <div
